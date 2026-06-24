@@ -20,7 +20,7 @@
   OPERATOR   : Edwin Dominic
   ROLE       : SOC Analyst | Detection Engineer | Threat Hunter
   CLEARANCE  : CEH v13 | CSCU | CNSP (In Progress)
-  SIEM       : Wazuh ✔  Splunk ✔  Microsoft Sentinel (In Progress)
+  SIEM       : Wazuh ✔  Splunk & Microsoft Sentinel (In Progress)
   FRAMEWORK  : MITRE ATT&CK — 8 Techniques Validated End-to-End
   INTEL      : 15+ Vulnerabilities Disclosed (IIT Madras, CERT-In HoF)
   LOCATION   : Kerala, India — Open to Bangalore / Hyderabad
@@ -118,7 +118,7 @@
 ### 🔴 &nbsp;`DEFENDERPI` — ML-Driven Network Security Platform
 
 ```
-CLASSIFICATION : ACTIVE PROJECT
+CLASSIFICATION : COMPLETED
 PLATFORM       : Raspberry Pi 4 (Inline IPS Gateway)
 DETECTION      : Suricata (NFQUEUE) → EVE JSON → Grafana Dashboards
 ML ENGINE      : K-Means + Isolation Forest (scikit-learn)
