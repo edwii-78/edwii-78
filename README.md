@@ -107,7 +107,7 @@
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/edwii-78/edwii-78/output/github-contribution-grid-snake-dark.svg" alt="contribution snake" />
+<img src="https://github.com/edwii-78/edwii-78/blob/output/github-contribution-grid-snake-dark.svg?raw=true" alt="contribution snake" />
 
 </div>
 
