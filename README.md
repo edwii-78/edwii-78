@@ -1,475 +1,196 @@
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<!--          EDWIN DOMINIC — SOC ANALYST GITHUB PROFILE               -->
-<!--          Blue Team | Detection Engineer | CEH v13                  -->
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-
 <div align="center">
-
-<!-- ┌─ CUSTOM ANIMATED HEADER SVG ────────────────────────────────────┐ -->
-<img src="https://raw.githubusercontent.com/edwii-78/edwii-78/main/header.svg" width="100%" alt="Edwin Dominic — SOC Analyst"/>
-<!-- └─────────────────────────────────────────────────────────────────┘ -->
-
-<br/>
-
-<!-- ┌─ LIVE TYPING TERMINAL ──────────────────────────────────────────┐ -->
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=13&duration=2800&pause=800&color=00B4D8&background=02081800&center=true&vCenter=true&multiline=false&width=780&height=36&lines=%5BSOC%3A%3ATERMINAL%5D+%24+whoami+--verbose;Operator%3A+Edwin+Dominic+%7C+Role%3A+Blue+Team+SOC+Analyst;%5BSOC%3A%3ATERMINAL%5D+%24+cat+%2Fetc%2Fsiem%2Fstatus;Wazuh+%5BONLINE%5D+%7C+Splunk+%5BONLINE%5D+%7C+Sentinel+%5BDEPLOYING%5D;%5BSOC%3A%3ATERMINAL%5D+%24+mitre+--query+techniques;8+ATT%26CK+Techniques+Validated+End-to-End+%E2%9C%94;%5BSOC%3A%3ATERMINAL%5D+%24+intel+--disclosures;15%2B+CVEs+Reported+%7C+CERT-In+HoF+%7C+IIT+Madras+%E2%9C%94;%5BSOC%3A%3ATERMINAL%5D+%24+ping+recruiter.target;Reply+from+edwindominic7878%40gmail.com+--+Open+to+SOC+Roles" alt="Typing SVG"/>
-<!-- └─────────────────────────────────────────────────────────────────┘ -->
-
-<br/>
-
-<!-- ┌─ LIVE PULSE BADGES ─────────────────────────────────────────────┐ -->
-![](https://img.shields.io/badge/🔵_STATUS-ONLINE_%7C_OPEN_TO_WORK-00B4D8?style=flat-square&labelColor=020818)
-![](https://img.shields.io/badge/🛡️_TEAM-BLUE_TEAM_DEFENDER-0D47A1?style=flat-square&labelColor=020818)
-![](https://img.shields.io/badge/🎯_MITRE-8_TECHNIQUES-0077B6?style=flat-square&labelColor=020818)
-![](https://img.shields.io/badge/⚠️_CVEs-15%2B_DISCLOSED-023E8A?style=flat-square&labelColor=020818)
-![](https://img.shields.io/badge/📍_LOCATION-Kerala_→_Bangalore-00B4D8?style=flat-square&labelColor=020818)
-<!-- └─────────────────────────────────────────────────────────────────┘ -->
-
+<img src="https://raw.githubusercontent.com/edwii-78/edwii-78/main/header.svg" width="100%" alt="Edwin Dominic"/>
 </div>
 
 <br/>
 
-<!-- ╔═══════════════════════════════════════════════════════════════╗ -->
-<!-- ║                  OPERATOR IDENTIFICATION                      ║ -->
-<!-- ╚═══════════════════════════════════════════════════════════════╝ -->
-
-```
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃                  [ SOC::TERMINAL ] — OPERATOR RECORD                 ┃
-┃━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┃
-┃                                                                      ┃
-┃  $ id           Edwin Dominic                                        ┃
-┃  $ role         SOC Analyst · Detection Engineer · Threat Hunter     ┃
-┃  $ clearance    CEH v13 [ACTIVE] · CSCU [ACTIVE] · CNSP [PENDING]   ┃
-┃                                                                      ┃
-┃  $ siem         Wazuh       ████████████████████  PRODUCTION         ┃
-┃                 Splunk      ████████████████████  PRODUCTION         ┃
-┃                 Sentinel    ███████████░░░░░░░░░  DEPLOYING          ┃
-┃                                                                      ┃
-┃  $ framework    MITRE ATT&CK ── 8 Techniques Validated E2E          ┃
-┃  $ intel        15+ CVEs · IIT Madras · 2× CERT-In HoF Nominated   ┃
-┃  $ languages    Python · Bash · C++ · SPL · KQL                     ┃
-┃                                                                      ┃
-┃  $ uplink       edwindominic7878@gmail.com                           ┃
-┃  $ location     Kerala, India ──► Bangalore / Hyderabad [READY]     ┃
-┃  $ mission      [🔵 ACTIVE] Seeking SOC / Detection Engineering Role ┃
-┃                                                                      ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-
-<br/>
-
-<!-- ╔═══════════════════════════════════════════════════════════════╗ -->
-<!-- ║                    OPERATOR UPLINKS                           ║ -->
-<!-- ╚═══════════════════════════════════════════════════════════════╝ -->
-
 <div align="center">
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=020818)](https://linkedin.com/in/edwin78)
-[![TryHackMe](https://img.shields.io/badge/TryHackMe-Profile-00B4D8?style=for-the-badge&logo=tryhackme&logoColor=white&labelColor=020818)](https://tryhackme.com/p/edwindominic7878)
-[![Email](https://img.shields.io/badge/Email-Hire_Me-0077B6?style=for-the-badge&logo=gmail&logoColor=white&labelColor=020818)](mailto:edwindominic7878@gmail.com)
-[![GitHub](https://img.shields.io/badge/GitHub-@edwii--78-0D47A1?style=for-the-badge&logo=github&logoColor=white&labelColor=020818)](https://github.com/edwii-78)
-
+<img src="https://readme-typing-svg.demolab.com?font=ui-monospace%2CSFMono-Regular%2C+SF+Mono%2CConsolas%2Cmonospace&size=13&duration=3000&pause=1000&color=8B949E&background=0D111700&center=true&vCenter=true&width=720&height=28&lines=Security+Operations+%E2%80%94+Turning+noise+into+signal%2C+signals+into+action.;Detection+Engineering+%E2%80%94+Building+rules+that+catch+what+matters.;Threat+Analysis+%E2%80%94+Every+log+is+a+clue.+Every+alert+tells+a+story." alt=""/>
 </div>
 
 <br/>
 
 ---
 
-<!-- ╔═══════════════════════════════════════════════════════════════╗ -->
-<!-- ║               BLUE TEAM ARSENAL — TECH STACK                  ║ -->
-<!-- ╚═══════════════════════════════════════════════════════════════╝ -->
+## About
 
-## `[ 01 ]` &nbsp; Blue Team Arsenal
+SOC analyst with hands-on experience building and operating detection engineering labs from the ground up. My work centres on Wazuh and Splunk SIEM environments, writing detection rules mapped to MITRE ATT&CK, and validating them against real attack simulations — not just theory.
+
+I've disclosed 15+ vulnerabilities to Indian government portals and institutions independently, with nominations to the CERT-In Hall of Fame. I build tools that work in production: a Raspberry Pi-based inline IPS running Suricata with ML-backed anomaly detection is currently live on my home network.
+
+Currently deepening expertise in Microsoft Sentinel and cloud security while pursuing CNSP and AWS certifications. Open to roles in SOC analysis, detection engineering, or threat hunting — anywhere the work is meaningful.
+
+```
+Contact  →  edwindominic7878@gmail.com
+LinkedIn →  linkedin.com/in/edwin78
+Location →  Kerala, India — open to relocation globally
+```
+
+---
+
+## Projects
+
+These are labs built to simulate real environments, not toy setups. Each one produced investigation reports and detection artefacts.
+
+<br/>
+
+**DefenderPi — Inline IPS with ML Anomaly Detection**
+
+A Raspberry Pi 4 deployed as an inline network security appliance using Suricata in NFQUEUE mode. Traffic flows through the device; suspicious packets trigger automated iptables/ipset block rules. A secondary ML layer — K-Means clustering and Isolation Forest — flags behavioural anomalies that signature rules miss. Threat intelligence is enriched via Redis and pushed to a Telegram alerting bot. DNS filtering runs through Pi-hole backed by Unbound for recursive resolution.
+
+This is a production deployment on a live network, not a VM lab.
+
+[![View →](https://img.shields.io/badge/View_Repository-DefenderPi-1f6feb?style=flat-square&logo=github&logoColor=white)](https://github.com/edwii-78/DefenderPi)
+
+<br/>
+
+**Wazuh Detection Engineering Lab — Windows Threat Simulation**
+
+Built a detection engineering environment on Windows 11 with Sysmon feeding telemetry into Wazuh. Simulated and detected eight MITRE ATT&CK techniques end-to-end: reconnaissance, encoded PowerShell execution, registry and startup persistence, Windows service abuse, PsExec lateral movement, SMB/NTLM authentication monitoring, and privileged account tracking. Each technique produced a detection rule, triggered an alert, and was documented in an SOC-style incident report.
+
+Alert delivery via Gmail SMTP and Telegram. Windows Event IDs 4624, 4625, 4634, 4672 correlated across the attack chain.
+
+[![View →](https://img.shields.io/badge/View_Repository-Wazuh_SOC_Lab-1f6feb?style=flat-square&logo=github&logoColor=white)](https://github.com/edwii-78/Wazuh-SOC-Detection-Engineering-Lab)
+
+<br/>
+
+**Splunk Detection Engineering Lab — Full Kill Chain Simulation** *(in progress)*
+
+Building a Splunk Enterprise environment with SPL-based detection engineering across a full attack chain: initial access, WinRM abuse, LSASS credential dumping, C2 beaconing, data exfiltration, and ransomware detonation. Detections target LOLBins, encoded PowerShell, Certutil, MSHTA, and Rundll32 abuse. Capstone: a full multi-stage simulation producing an executive-ready incident report.
+
+[![View →](https://img.shields.io/badge/View_Repository-Splunk_Lab-1f6feb?style=flat-square&logo=github&logoColor=white)](https://github.com/edwii-78/Splunk-SOC-Detection-Engineering-Lab)
+
+<br/>
+
+**ZeroTrace — AES-256 Encrypted Messenger**
+
+A mobile messaging application built with Flutter, Firebase, and Node.js. End-to-end AES-256 encryption with server-side auto-deletion of messages. Designed from the ground up with privacy as the primary constraint, not an afterthought.
+
+[![View →](https://img.shields.io/badge/View_Repository-ZeroTrace-1f6feb?style=flat-square&logo=github&logoColor=white)](https://github.com/edwii-78/ZeroTrace-AES-Encrypted-Messaging-App-With-ServerSide-AutoDeletion)
+
+---
+
+## Skills & Tools
 
 <div align="center">
 
-<table>
-<tr><td align="center" colspan="5">
+**SIEM & Monitoring**
 
-**◈ &nbsp; SIEM &nbsp; · &nbsp; DETECTION &nbsp; · &nbsp; MONITORING &nbsp; ◈**
+![Wazuh](https://img.shields.io/badge/Wazuh-0d1117?style=flat-square&logo=wazuh&logoColor=white&labelColor=0d1117&color=21262d)
+![Splunk](https://img.shields.io/badge/Splunk-0d1117?style=flat-square&logo=splunk&logoColor=white&labelColor=0d1117&color=21262d)
+![Microsoft Sentinel](https://img.shields.io/badge/Microsoft_Sentinel-0d1117?style=flat-square&logo=microsoftazure&logoColor=white&labelColor=0d1117&color=21262d)
+![Grafana](https://img.shields.io/badge/Grafana-0d1117?style=flat-square&logo=grafana&logoColor=white&labelColor=0d1117&color=21262d)
+![Elastic](https://img.shields.io/badge/Elastic-0d1117?style=flat-square&logo=elastic&logoColor=white&labelColor=0d1117&color=21262d)
 
-</td></tr>
-<tr>
-<td align="center"><img src="https://img.shields.io/badge/Wazuh-ACTIVE-00B4D8?style=for-the-badge&logo=wazuh&logoColor=white&labelColor=020818"/></td>
-<td align="center"><img src="https://img.shields.io/badge/Splunk-ACTIVE-0077B6?style=for-the-badge&logo=splunk&logoColor=white&labelColor=020818"/></td>
-<td align="center"><img src="https://img.shields.io/badge/Sentinel-DEPLOYING-0D47A1?style=for-the-badge&logo=microsoftazure&logoColor=white&labelColor=020818"/></td>
-<td align="center"><img src="https://img.shields.io/badge/Grafana-DASHBOARDS-023E8A?style=for-the-badge&logo=grafana&logoColor=white&labelColor=020818"/></td>
-<td align="center"><img src="https://img.shields.io/badge/Redis-INTEL_CACHE-00B4D8?style=for-the-badge&logo=redis&logoColor=white&labelColor=020818"/></td>
-</tr>
-<tr><td align="center" colspan="5">
+**Network & Endpoint**
 
-**◈ &nbsp; NETWORK &nbsp; · &nbsp; IDS/IPS &nbsp; · &nbsp; TRAFFIC ANALYSIS &nbsp; ◈**
+![Suricata](https://img.shields.io/badge/Suricata-0d1117?style=flat-square&logoColor=white&labelColor=0d1117&color=21262d)
+![Wireshark](https://img.shields.io/badge/Wireshark-0d1117?style=flat-square&logo=wireshark&logoColor=white&labelColor=0d1117&color=21262d)
+![Sysmon](https://img.shields.io/badge/Sysmon-0d1117?style=flat-square&logo=windows&logoColor=white&labelColor=0d1117&color=21262d)
+![Nmap](https://img.shields.io/badge/Nmap-0d1117?style=flat-square&logoColor=white&labelColor=0d1117&color=21262d)
+![Burp Suite](https://img.shields.io/badge/Burp_Suite-0d1117?style=flat-square&logoColor=white&labelColor=0d1117&color=21262d)
+![Metasploit](https://img.shields.io/badge/Metasploit-0d1117?style=flat-square&logoColor=white&labelColor=0d1117&color=21262d)
+![Autopsy](https://img.shields.io/badge/Autopsy-0d1117?style=flat-square&logoColor=white&labelColor=0d1117&color=21262d)
 
-</td></tr>
-<tr>
-<td align="center"><img src="https://img.shields.io/badge/Suricata-IDS%2FIPS-00B4D8?style=for-the-badge&logoColor=white&labelColor=020818"/></td>
-<td align="center"><img src="https://img.shields.io/badge/Wireshark-PCAP-0077B6?style=for-the-badge&logo=wireshark&logoColor=white&labelColor=020818"/></td>
-<td align="center"><img src="https://img.shields.io/badge/Pi--hole-DNS_DEFENCE-0D47A1?style=for-the-badge&logo=pi-hole&logoColor=white&labelColor=020818"/></td>
-<td align="center"><img src="https://img.shields.io/badge/Nmap-RECON-023E8A?style=for-the-badge&logoColor=white&labelColor=020818"/></td>
-<td align="center"><img src="https://img.shields.io/badge/iptables-ENFORCEMENT-00B4D8?style=for-the-badge&logo=linux&logoColor=white&labelColor=020818"/></td>
-</tr>
-<tr><td align="center" colspan="5">
+**Languages & Scripting**
 
-**◈ &nbsp; ENDPOINT &nbsp; · &nbsp; FORENSICS &nbsp; · &nbsp; MALWARE &nbsp; ◈**
+![Python](https://img.shields.io/badge/Python-0d1117?style=flat-square&logo=python&logoColor=white&labelColor=0d1117&color=21262d)
+![Bash](https://img.shields.io/badge/Bash-0d1117?style=flat-square&logo=gnubash&logoColor=white&labelColor=0d1117&color=21262d)
+![C++](https://img.shields.io/badge/C++-0d1117?style=flat-square&logo=cplusplus&logoColor=white&labelColor=0d1117&color=21262d)
+![SPL](https://img.shields.io/badge/SPL-0d1117?style=flat-square&logoColor=white&labelColor=0d1117&color=21262d)
+![KQL](https://img.shields.io/badge/KQL-0d1117?style=flat-square&logoColor=white&labelColor=0d1117&color=21262d)
+![Flutter](https://img.shields.io/badge/Flutter-0d1117?style=flat-square&logo=flutter&logoColor=white&labelColor=0d1117&color=21262d)
 
-</td></tr>
-<tr>
-<td align="center"><img src="https://img.shields.io/badge/Sysmon-TELEMETRY-00B4D8?style=for-the-badge&logo=windows&logoColor=white&labelColor=020818"/></td>
-<td align="center"><img src="https://img.shields.io/badge/Autopsy-FORENSICS-0077B6?style=for-the-badge&logoColor=white&labelColor=020818"/></td>
-<td align="center"><img src="https://img.shields.io/badge/Metasploit-EMULATION-0D47A1?style=for-the-badge&logoColor=white&labelColor=020818"/></td>
-<td align="center"><img src="https://img.shields.io/badge/Burp_Suite-WEB_AUDIT-023E8A?style=for-the-badge&logoColor=white&labelColor=020818"/></td>
-<td align="center"><img src="https://img.shields.io/badge/Raspberry_Pi-EDGE_IPS-00B4D8?style=for-the-badge&logo=raspberrypi&logoColor=white&labelColor=020818"/></td>
-</tr>
-<tr><td align="center" colspan="5">
+**Frameworks & Platforms**
 
-**◈ &nbsp; FRAMEWORKS &nbsp; · &nbsp; OS &nbsp; · &nbsp; SCRIPTING &nbsp; ◈**
+![MITRE ATT&CK](https://img.shields.io/badge/MITRE_ATT%26CK-0d1117?style=flat-square&logoColor=white&labelColor=0d1117&color=21262d)
+![Raspberry Pi](https://img.shields.io/badge/Raspberry_Pi-0d1117?style=flat-square&logo=raspberrypi&logoColor=white&labelColor=0d1117&color=21262d)
+![Kali Linux](https://img.shields.io/badge/Kali_Linux-0d1117?style=flat-square&logo=kalilinux&logoColor=white&labelColor=0d1117&color=21262d)
+![Linux](https://img.shields.io/badge/Linux-0d1117?style=flat-square&logo=linux&logoColor=white&labelColor=0d1117&color=21262d)
+![Windows Server](https://img.shields.io/badge/Windows_Server-0d1117?style=flat-square&logo=windows&logoColor=white&labelColor=0d1117&color=21262d)
 
-</td></tr>
-<tr>
-<td align="center"><img src="https://img.shields.io/badge/MITRE_ATT%26CK-8_TECHS-00B4D8?style=for-the-badge&logoColor=white&labelColor=020818"/></td>
-<td align="center"><img src="https://img.shields.io/badge/Kali_Linux-LAB_OS-0077B6?style=for-the-badge&logo=kalilinux&logoColor=white&labelColor=020818"/></td>
-<td align="center"><img src="https://img.shields.io/badge/Python-AUTOMATION-0D47A1?style=for-the-badge&logo=python&logoColor=white&labelColor=020818"/></td>
-<td align="center"><img src="https://img.shields.io/badge/Bash-SOC_SCRIPTS-023E8A?style=for-the-badge&logo=gnubash&logoColor=white&labelColor=020818"/></td>
-<td align="center"><img src="https://img.shields.io/badge/Flutter-SECURE_APP-00B4D8?style=for-the-badge&logo=flutter&logoColor=white&labelColor=020818"/></td>
-</tr>
-</table>
+</div>
+
+---
+
+## GitHub Activity
+
+<div align="center">
+
+<img height="165" src="https://github-readme-stats.vercel.app/api?username=edwii-78&show_icons=true&theme=github_dark&bg_color=0d1117&title_color=e6edf3&text_color=8b949e&icon_color=1f6feb&border_color=21262d&include_all_commits=true&count_private=true&hide_border=false&border_radius=6&ring_color=1f6feb"/>
+<img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=edwii-78&layout=compact&theme=github_dark&bg_color=0d1117&title_color=e6edf3&text_color=8b949e&border_color=21262d&langs_count=6&border_radius=6"/>
+
+<br/><br/>
+
+<img src="https://github-readme-streak-stats.herokuapp.com/?user=edwii-78&background=0d1117&ring=1f6feb&fire=f85149&currStreakLabel=e6edf3&sideLabels=8b949e&dates=6e7681&border=21262d&stroke=21262d&currStreakNum=e6edf3&sideNums=c9d1d9&border_radius=6"/>
 
 </div>
 
 <br/>
 
----
+**Contribution / Threat Path**
 
-<!-- ╔═══════════════════════════════════════════════════════════════╗ -->
-<!-- ║              INTELLIGENCE DASHBOARD — STATS                   ║ -->
-<!-- ╚═══════════════════════════════════════════════════════════════╝ -->
-
-## `[ 02 ]` &nbsp; Intelligence Dashboard
+> The red trace is the threat actor path through your contribution graph — moving through every cell your commits occupy. Red on blue: attack surface mapped, monitored, and owned.
 
 <div align="center">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/edwii-78/edwii-78/blob/output/threat-path-dark.svg?raw=true"/>
+  <source media="(prefers-color-scheme: light)" srcset="https://github.com/edwii-78/edwii-78/blob/output/threat-path.svg?raw=true"/>
+  <img alt="Threat Path — Contribution Graph" src="https://github.com/edwii-78/edwii-78/blob/output/threat-path-dark.svg?raw=true"/>
+</picture>
+</div>
 
-<a href="https://github.com/edwii-78">
-<img height="170" src="https://github-readme-stats.vercel.app/api?username=edwii-78&show_icons=true&bg_color=020818&title_color=00B4D8&text_color=90E0EF&icon_color=0077B6&border_color=0D47A1&include_all_commits=true&count_private=true&border_radius=6&ring_color=00B4D8" />
+<br/>
+
+<div align="center">
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=edwii-78&bg_color=0d1117&color=8b949e&line=1f6feb&point=e6edf3&area=true&hide_border=false&border_color=21262d&area_color=1a2d50&radius=6" alt="Activity Graph"/>
+</div>
+
+---
+
+## Certifications
+
+| Certification | Issuer | Status |
+|:---|:---|:---:|
+| Certified Ethical Hacker — CEH v13 | EC-Council | Active |
+| Certified Secure Computer User — CSCU | EC-Council | Active |
+| Introduction to Microsoft Sentinel | Microsoft | Active |
+| Intro to Splunk | Splunk | Active |
+| Cyber Threat Intelligence 101 | arcX | Active |
+| Cybersecurity Job Simulations | Forage — TATA, Deloitte, AIG, Mastercard | Active |
+| Certified Network Security Practitioner — CNSP | SecOps Group | In Progress |
+| AWS Cloud Practitioner | Amazon Web Services | In Progress |
+| SOC Level 1 | TryHackMe | In Progress |
+| AI Security | TryHackMe | In Progress |
+
+---
+
+## Responsible Disclosure
+
+Independent vulnerability research targeting public-sector and institutional infrastructure.
+
+- **15+ vulnerabilities** disclosed across Indian government portals and academic institutions
+- Vulnerability classes: SQL injection, reflected and stored XSS, DNS spoofing, clickjacking, authentication bypass
+- **IIT Madras** — verified and acknowledged disclosure
+- **CERT-In Hall of Fame** — nominated twice (under review)
+- All disclosures made through official channels. Zero malicious use.
+
+---
+
+## TryHackMe
+
+<div align="center">
+<a href="https://tryhackme.com/p/edwindominic7878">
+<img src="https://tryhackme-badges.s3.amazonaws.com/edwindominic7878.png" alt="TryHackMe Profile"/>
 </a>
-<a href="https://github.com/edwii-78">
-<img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=edwii-78&layout=compact&bg_color=020818&title_color=00B4D8&text_color=90E0EF&border_color=0D47A1&langs_count=8&border_radius=6" />
-</a>
-
-<br/><br/>
-
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=edwii-78&background=020818&ring=00B4D8&fire=0077B6&currStreakLabel=00B4D8&sideLabels=90E0EF&dates=555577&border=0D47A1&stroke=0D47A1&currStreakNum=FFFFFF&sideNums=90E0EF&border_radius=6" alt="Streak Stats"/>
-
-<br/><br/>
-
-<!-- CYBER THREAT SNAKE — blue tones eating contributions -->
-<img src="https://github.com/edwii-78/edwii-78/blob/output/github-contribution-grid-snake-dark.svg?raw=true" alt="Cyber Threat Snake — Blue Team Contribution Graph"/>
-
-<br/><br/>
-
-<!-- ACTIVITY GRAPH — full blue -->
-[![Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=edwii-78&bg_color=020818&color=00B4D8&line=0077B6&point=90E0EF&area=true&hide_border=false&border_color=0D47A1&area_color=023E8A&radius=6)](https://github.com/ashutosh00710/github-readme-activity-graph)
-
 </div>
 
-<br/>
-
 ---
-
-<!-- ╔═══════════════════════════════════════════════════════════════╗ -->
-<!-- ║                 ACTIVE OPERATIONS — PROJECTS                  ║ -->
-<!-- ╚═══════════════════════════════════════════════════════════════╝ -->
-
-## `[ 03 ]` &nbsp; Active Operations — Project Dossiers
-
-<br/>
-
-<table width="100%">
-<tr>
-
-<!-- ─── PROJECT 01 ──────────────────────────────────────── -->
-<td width="50%" valign="top">
-
-```
-┌─[ OP::DEFENDERPI ]──────────────────────────────┐
-│  CLASSIFICATION : COMPLETED ✔                    │
-│  PLATFORM       : Raspberry Pi 4 (Edge IPS)      │
-│  IDS ENGINE     : Suricata (NFQUEUE inline mode) │
-│  ML DETECTION   : K-Means + Isolation Forest     │
-│  STACK          : EVE JSON → Redis → Grafana     │
-│  RESPONSE       : Auto iptables/ipset blocking   │
-│  INTEL          : Telegram SOC Bot               │
-│  DNS LAYER      : Pi-hole + Unbound (recursive)  │
-└─────────────────────────────────────────────────┘
-```
-
-**Self-hosted production-grade inline IPS.** Rule-based Suricata detection fused with ML behavioural analysis. Validated against simulated multi-stage external attacks. False positives measurably reduced.
-
-[![OPEN DOSSIER](https://img.shields.io/badge/◈_OPEN_DOSSIER-DefenderPi-00B4D8?style=for-the-badge&logo=github&logoColor=white&labelColor=020818)](https://github.com/edwii-78/DefenderPi)
-
-</td>
-
-<!-- ─── PROJECT 02 ──────────────────────────────────────── -->
-<td width="50%" valign="top">
-
-```
-┌─[ OP::WAZUH-DETECT ]────────────────────────────┐
-│  CLASSIFICATION : COMPLETED ✔                    │
-│  SIEM           : Wazuh + Sysmon (Win 11 Lab)   │
-│  MITRE ATT&CK   : 8 Techniques — Full E2E       │
-│  DETECTIONS     : Encoded PowerShell             │
-│                   Registry Persistence           │
-│                   PsExec Lateral Movement        │
-│                   SMB/NTLM + Privilege Abuse     │
-│  EVENT IDs      : 4624 · 4625 · 4634 · 4672     │
-│  ALERTING       : Gmail SMTP + Telegram Bot      │
-└─────────────────────────────────────────────────┘
-```
-
-**Full attack simulation → telemetry correlation → Wazuh alert validation → timeline reconstruction.** SOC-style IR reports produced per incident. End-to-end detection engineering lifecycle.
-
-[![OPEN DOSSIER](https://img.shields.io/badge/◈_OPEN_DOSSIER-Wazuh_SOC_Lab-00B4D8?style=for-the-badge&logo=github&logoColor=white&labelColor=020818)](https://github.com/edwii-78/Wazuh-SOC-Detection-Engineering-Lab)
-
-</td>
-</tr>
-
-<tr>
-
-<!-- ─── PROJECT 03 ──────────────────────────────────────── -->
-<td width="50%" valign="top">
-
-```
-┌─[ OP::SPLUNK-HUNT ]─────────────────────────────┐
-│  CLASSIFICATION : IN PROGRESS ◉                  │
-│  SIEM           : Splunk Enterprise              │
-│  ATTACK CHAIN   : Initial Access                 │
-│                   → WinRM + LSASS Dump           │
-│                   → C2 Beacon + Exfil            │
-│                   → Ransomware Detonation        │
-│  DETECTIONS     : LOLBins · Certutil · MSHTA     │
-│                   Rundll32 · Credential Dumping  │
-│  CAPSTONE       : Full Simulation + IR Report    │
-└─────────────────────────────────────────────────┘
-```
-
-**SPL detection engineering → MITRE-mapped alert creation → SOC dashboards → full multi-stage attack simulation capstone** with executive-ready incident report.
-
-[![OPEN DOSSIER](https://img.shields.io/badge/◈_OPEN_DOSSIER-Splunk_Lab-0077B6?style=for-the-badge&logo=github&logoColor=white&labelColor=020818)](https://github.com/edwii-78/Splunk-SOC-Detection-Engineering-Lab)
-
-</td>
-
-<!-- ─── PROJECT 04 ──────────────────────────────────────── -->
-<td width="50%" valign="top">
-
-```
-┌─[ OP::ZEROTRACE ]───────────────────────────────┐
-│  CLASSIFICATION : COMPLETED ✔                    │
-│  TYPE           : Secure Messaging Application   │
-│  STACK          : Flutter + Firebase + Node.js   │
-│  ENCRYPTION     : AES-256 End-to-End            │
-│  PRIVACY        : Server-Side Auto-Deletion      │
-│  PLATFORM       : Android / iOS                  │
-│                                                  │
-│  "Messages that self-destruct. Zero traces."     │
-└─────────────────────────────────────────────────┘
-```
-
-**Military-grade AES-256 encrypted messaging** with privacy-first architecture. Messages are auto-deleted server-side leaving zero forensic trace. Built security-first from ground up.
-
-[![OPEN DOSSIER](https://img.shields.io/badge/◈_OPEN_DOSSIER-ZeroTrace-023E8A?style=for-the-badge&logo=github&logoColor=white&labelColor=020818)](https://github.com/edwii-78/ZeroTrace-AES-Encrypted-Messaging-App-With-ServerSide-AutoDeletion)
-
-</td>
-</tr>
-</table>
-
-<br/>
-
----
-
-<!-- ╔═══════════════════════════════════════════════════════════════╗ -->
-<!-- ║              CERTIFICATIONS & CLEARANCES                      ║ -->
-<!-- ╚═══════════════════════════════════════════════════════════════╝ -->
-
-## `[ 04 ]` &nbsp; Certifications & Clearances
 
 <div align="center">
-
-<table>
-<tr>
-<th align="center">◈</th>
-<th align="left">Certification</th>
-<th align="center">Issuing Authority</th>
-<th align="center">Status</th>
-</tr>
-<tr>
-<td align="center">🛡️</td>
-<td><b>Certified Ethical Hacker — CEH v13</b></td>
-<td align="center">EC-Council</td>
-<td align="center"><img src="https://img.shields.io/badge/ACTIVE-00B4D8?style=flat-square&labelColor=020818"/></td>
-</tr>
-<tr>
-<td align="center">🔐</td>
-<td><b>Certified Secure Computer User — CSCU</b></td>
-<td align="center">EC-Council</td>
-<td align="center"><img src="https://img.shields.io/badge/ACTIVE-00B4D8?style=flat-square&labelColor=020818"/></td>
-</tr>
-<tr>
-<td align="center">☁️</td>
-<td><b>Introduction to Microsoft Sentinel</b></td>
-<td align="center">Microsoft</td>
-<td align="center"><img src="https://img.shields.io/badge/ACTIVE-00B4D8?style=flat-square&labelColor=020818"/></td>
-</tr>
-<tr>
-<td align="center">📊</td>
-<td><b>Intro to Splunk</b></td>
-<td align="center">Splunk</td>
-<td align="center"><img src="https://img.shields.io/badge/ACTIVE-00B4D8?style=flat-square&labelColor=020818"/></td>
-</tr>
-<tr>
-<td align="center">🕵️</td>
-<td><b>Cyber Threat Intelligence 101</b></td>
-<td align="center">arcX</td>
-<td align="center"><img src="https://img.shields.io/badge/ACTIVE-00B4D8?style=flat-square&labelColor=020818"/></td>
-</tr>
-<tr>
-<td align="center">💼</td>
-<td><b>Cybersecurity Job Simulations</b> — TATA · Deloitte · AIG · Mastercard</td>
-<td align="center">Forage</td>
-<td align="center"><img src="https://img.shields.io/badge/ACTIVE-00B4D8?style=flat-square&labelColor=020818"/></td>
-</tr>
-<tr>
-<td align="center">🔰</td>
-<td><b>Certified Network Security Practitioner — CNSP</b></td>
-<td align="center">SecOps Group</td>
-<td align="center"><img src="https://img.shields.io/badge/IN_PROGRESS-0077B6?style=flat-square&labelColor=020818"/></td>
-</tr>
-<tr>
-<td align="center">☁️</td>
-<td><b>AWS Cloud Practitioner</b></td>
-<td align="center">Amazon Web Services</td>
-<td align="center"><img src="https://img.shields.io/badge/IN_PROGRESS-0077B6?style=flat-square&labelColor=020818"/></td>
-</tr>
-<tr>
-<td align="center">🎯</td>
-<td><b>SOC Level 1 Path</b></td>
-<td align="center">TryHackMe</td>
-<td align="center"><img src="https://img.shields.io/badge/IN_PROGRESS-0077B6?style=flat-square&labelColor=020818"/></td>
-</tr>
-<tr>
-<td align="center">🤖</td>
-<td><b>AI Security Path</b></td>
-<td align="center">TryHackMe</td>
-<td align="center"><img src="https://img.shields.io/badge/IN_PROGRESS-0077B6?style=flat-square&labelColor=020818"/></td>
-</tr>
-</table>
-
-</div>
-
-<br/>
-
----
-
-<!-- ╔═══════════════════════════════════════════════════════════════╗ -->
-<!-- ║             RESPONSIBLE DISCLOSURES — THREAT INTEL            ║ -->
-<!-- ╚═══════════════════════════════════════════════════════════════╝ -->
-
-## `[ 05 ]` &nbsp; Responsible Disclosures
-
-```
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃              [ CERT ] — VULNERABILITY DISCLOSURE RECORD              ┃
-┃━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┃
-┃                                                                      ┃
-┃  RESEARCHER    ▸  Edwin Dominic — Independent Security Researcher    ┃
-┃  SCOPE         ▸  Indian & International Government Portals          ┃
-┃                                                                      ┃
-┃  TOTAL FINDS   ▸  15+ Vulnerabilities — Responsibly Reported        ┃
-┃  VULN TYPES    ▸  SQL Injection (SQLi)                               ┃
-┃                ▸  Cross-Site Scripting (XSS)                         ┃
-┃                ▸  DNS Spoofing / Cache Poisoning                     ┃
-┃                ▸  Clickjacking / UI Redress                          ┃
-┃                ▸  Authentication Bypass                              ┃
-┃                                                                      ┃
-┃  NOTABLE       ▸  IIT Madras — Verified Vulnerability Disclosure     ┃
-┃  RECOGNITION   ▸  CERT-In Hall of Fame — 2× Nominated               ┃
-┃                ▸  [STATUS: Under Review]                             ┃
-┃                                                                      ┃
-┃  ETHICS        ▸  100% Responsible Disclosure · Zero Malicious Use  ┃
-┃                                                                      ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-
-<br/>
-
----
-
-<!-- ╔═══════════════════════════════════════════════════════════════╗ -->
-<!-- ║                  TRYHACKME FIELD RATING                       ║ -->
-<!-- ╚═══════════════════════════════════════════════════════════════╝ -->
-
-## `[ 06 ]` &nbsp; TryHackMe Field Rating
-
-<div align="center">
-
-[![TryHackMe](https://tryhackme-badges.s3.amazonaws.com/edwindominic7878.png)](https://tryhackme.com/p/edwindominic7878)
-
-</div>
-
-<br/>
-
----
-
-<!-- ╔═══════════════════════════════════════════════════════════════╗ -->
-<!-- ║                   LIVE MISSION FEED                           ║ -->
-<!-- ╚═══════════════════════════════════════════════════════════════╝ -->
-
-## `[ 07 ]` &nbsp; Live Mission Feed
-
-```
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃                 [ SOC::FEED ] — CURRENT OBJECTIVES                   ┃
-┃━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┃
-┃                                                                      ┃
-┃  [◉ ACTIVE]  Microsoft Sentinel — Detection Rule Engineering         ┃
-┃  [◉ ACTIVE]  CNSP — Network Security Practitioner Exam Prep          ┃
-┃  [◉ ACTIVE]  Splunk Lab — Full-Chain Capstone Simulation             ┃
-┃  [◉ ACTIVE]  AWS Cloud Practitioner — Cloud Security Track           ┃
-┃  [◉ ACTIVE]  TryHackMe — SOC Level 1 + AI Security Paths            ┃
-┃                                                                      ┃
-┃━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┃
-┃                                                                      ┃
-┃  [TARGET]    SOC Analyst / Detection Engineer Role                   ┃
-┃  [AO]        Bangalore / Hyderabad — Immediate Relocation Available  ┃
-┃  [UPLINK]    edwindominic7878@gmail.com                              ┃
-┃  [SIGNAL]    linkedin.com/in/edwin78                                 ┃
-┃                                                                      ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-
-<br/>
-
----
-
-<!-- ╔═══════════════════════════════════════════════════════════════╗ -->
-<!-- ║                       FOOTER                                  ║ -->
-<!-- ╚═══════════════════════════════════════════════════════════════╝ -->
-
-<div align="center">
-
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0,020818,023E8A,0077B6,00B4D8&height=110&section=footer&animation=fadeIn&reversal=true"/>
-
-<br/>
-
-![Profile Views](https://komarev.com/ghpvc/?username=edwii-78&color=00B4D8&style=for-the-badge&label=OPERATOR+PROFILE+VIEWS&labelColor=020818)
-
-<br/>
-
-```
-[ BLUE TEAM ]  ◆  [ ALWAYS DEFENDING ]  ◆  [ NEVER COMPROMISED ]
-```
-
-*"The attacker needs to succeed once. The defender must succeed every time."*
-
-<br/>
-
+<sub>
+<img src="https://komarev.com/ghpvc/?username=edwii-78&color=1f6feb&style=flat-square&label=profile+views&labelColor=0d1117"/>
+&nbsp;&nbsp;
+<img src="https://img.shields.io/badge/open_to_work-globally-238636?style=flat-square&labelColor=0d1117"/>
+</sub>
 </div>
