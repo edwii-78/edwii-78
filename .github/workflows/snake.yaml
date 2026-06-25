@@ -1,4 +1,4 @@
-name: Generate Cyber Snake
+name: Threat Path Animation
 
 on:
   schedule:
@@ -12,14 +12,14 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: Platane/snk@v3
+      - uses: Platane/snk/svg-only@v3
         with:
           github_user_name: edwii-78
           outputs: |
-            dist/github-contribution-grid-snake.svg
-            dist/github-contribution-grid-snake-dark.svg?palette=github-dark&color_snake=00B4D8&color_dots=#020818,#023E8A,#0077B6,#0096C7,#00B4D8&color_empty=#020818
+            dist/threat-path.svg?color_snake=f85149&color_dots=#0d1117,#1a1f2e,#0d2137,#0d4a7a,#1f6feb&color_empty=#0d1117
+            dist/threat-path-dark.svg?palette=github-dark&color_snake=f85149&color_dots=#0d1117,#1a1f2e,#0d2137,#0d4a7a,#1f6feb
 
-      - name: Push to output branch
+      - name: Deploy to output branch
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
