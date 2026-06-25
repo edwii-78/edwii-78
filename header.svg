@@ -1,0 +1,97 @@
+<svg width="860" height="200" viewBox="0 0 860 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="100%" stop-color="#0a0e16"/>
+    </linearGradient>
+    <linearGradient id="topbar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1f6feb" stop-opacity="0"/>
+      <stop offset="25%" stop-color="#1f6feb" stop-opacity="0.9"/>
+      <stop offset="75%" stop-color="#1f6feb" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#1f6feb" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="botbar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#30363d" stop-opacity="0"/>
+      <stop offset="30%" stop-color="#30363d" stop-opacity="0.6"/>
+      <stop offset="70%" stop-color="#30363d" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#30363d" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="softglow"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+
+  <!-- bg -->
+  <rect width="860" height="200" fill="url(#bg)"/>
+
+  <!-- faint dot grid -->
+  <g fill="#21262d" opacity="0.5">
+    <rect x="40" y="30" width="2" height="2" rx="1"/>
+    <rect x="80" y="30" width="2" height="2" rx="1"/>
+    <rect x="120" y="30" width="2" height="2" rx="1"/>
+    <rect x="160" y="30" width="2" height="2" rx="1"/>
+    <rect x="700" y="30" width="2" height="2" rx="1"/>
+    <rect x="740" y="30" width="2" height="2" rx="1"/>
+    <rect x="780" y="30" width="2" height="2" rx="1"/>
+    <rect x="820" y="30" width="2" height="2" rx="1"/>
+    <rect x="40" y="170" width="2" height="2" rx="1"/>
+    <rect x="80" y="170" width="2" height="2" rx="1"/>
+    <rect x="820" y="170" width="2" height="2" rx="1"/>
+    <rect x="780" y="170" width="2" height="2" rx="1"/>
+  </g>
+
+  <!-- top accent line -->
+  <rect x="0" y="0" width="860" height="2" fill="url(#topbar)"/>
+
+  <!-- top-left: status pill -->
+  <rect x="24" y="14" width="10" height="10" rx="5" fill="#3fb950">
+    <animate attributeName="opacity" values="1;0.2;1" dur="2.4s" repeatCount="indefinite"/>
+  </rect>
+  <text x="40" y="22" font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="10" fill="#3fb950" letter-spacing="0.8">NO ACTIVE INCIDENTS</text>
+
+  <!-- top-right: classification -->
+  <text x="836" y="22" font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="10" fill="#6e7681" text-anchor="end" letter-spacing="0.5">DETECTION ENGINEER</text>
+
+  <!-- left bracket -->
+  <path d="M24 42 L24 158 M24 42 L42 42 M24 158 L42 158" stroke="#1f6feb" stroke-width="1.5" fill="none" opacity="0.5"/>
+  <!-- right bracket -->
+  <path d="M836 42 L836 158 M836 42 L818 42 M836 158 L818 158" stroke="#1f6feb" stroke-width="1.5" fill="none" opacity="0.5"/>
+
+  <!-- name -->
+  <text x="430" y="108"
+    font-family="ui-monospace,'SF Mono',Consolas,monospace"
+    font-size="44" font-weight="700"
+    fill="#e6edf3" text-anchor="middle"
+    filter="url(#softglow)"
+    letter-spacing="3">Edwin Dominic</text>
+
+  <!-- role line -->
+  <text x="430" y="138"
+    font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"
+    font-size="14" fill="#8b949e" text-anchor="middle" letter-spacing="2.5">
+    Security Operations  ·  Detection Engineering  ·  Threat Analysis
+  </text>
+
+  <!-- scan line animation -->
+  <rect x="55" y="42" width="750" height="1" fill="#1f6feb" opacity="0">
+    <animate attributeName="y" values="42;158;42" dur="5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0.15;0.15;0" keyTimes="0;0.08;0.92;1" dur="5s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- bottom accent row -->
+  <rect x="0" y="182" width="860" height="1" fill="url(#botbar)"/>
+
+  <!-- bottom badges -->
+  <rect x="24" y="189" width="62" height="8" rx="4" fill="#1f3a5f"/>
+  <text x="55" y="196" font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="7" fill="#79c0ff" text-anchor="middle" letter-spacing="0.5">CEH v13</text>
+
+  <rect x="94" y="189" width="105" height="8" rx="4" fill="#2d1f1f"/>
+  <text x="146" y="196" font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="7" fill="#ff7b72" text-anchor="middle" letter-spacing="0.3">MITRE ATT&amp;CK · 8 TTPs</text>
+
+  <rect x="207" y="189" width="100" height="8" rx="4" fill="#2a1f08"/>
+  <text x="257" y="196" font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="7" fill="#e3b341" text-anchor="middle" letter-spacing="0.3">15+ CVEs Disclosed</text>
+
+  <rect x="315" y="189" width="90" height="8" rx="4" fill="#1f2d1f"/>
+  <text x="360" y="196" font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="7" fill="#56d364" text-anchor="middle" letter-spacing="0.3">CERT-In HoF Nom.</text>
+
+  <text x="836" y="197" font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="7" fill="#6e7681" text-anchor="end" letter-spacing="0.5">Kerala, India · Open to Relocation</text>
+</svg>
