@@ -1,4 +1,4 @@
-name: Generate Snake
+name: Generate Cyber Snake
 
 on:
   schedule:
@@ -17,9 +17,9 @@ jobs:
           github_user_name: edwii-78
           outputs: |
             dist/github-contribution-grid-snake.svg
-            dist/github-contribution-grid-snake-dark.svg?palette=github-dark&color_snake=00B4D8&color_dots=#0A0E1A,#023E8A,#0077B6,#0096C7,#00B4D8&color_empty=#0A0E1A
+            dist/github-contribution-grid-snake-dark.svg?palette=github-dark&color_snake=00B4D8&color_dots=#020818,#023E8A,#0077B6,#0096C7,#00B4D8&color_empty=#020818
 
-      - name: Push snake to output branch
+      - name: Push to output branch
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
