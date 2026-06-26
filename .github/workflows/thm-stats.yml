@@ -1,0 +1,35 @@
+name: Update TryHackMe Stats Card
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"   # every 6 hours
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Generate TryHackMe stats card
+        env:
+          THM_USER_HASH: ${{ secrets.THM_USER_HASH }}
+        run: python generate_thm_card.py
+
+      - name: Commit card if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/thm-stats.svg
+          git diff --cached --quiet && echo "No changes" || \
+            (git commit -m "chore: update TryHackMe stats card" && git push)
