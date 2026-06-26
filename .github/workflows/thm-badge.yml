@@ -7,7 +7,7 @@ on:
 
 jobs:
   update-badge:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     timeout-minutes: 5
     permissions:
       contents: write
@@ -15,19 +15,30 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
 
-      - name: Download TryHackMe badge
+      - name: Configure Git
         run: |
-          mkdir -p assets
-          curl -fsSL "https://tryhackme-badges.s3.amazonaws.com/edwindominic7878.png" \
-            -o assets/thm-badge.png
-          ls -lh assets/thm-badge.png
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Commit badge
+      - name: Fetch TryHackMe Badge
+        uses: DhanushNehru/tryhackme-badge-action-workflow@v1.0
+        continue-on-error: true
+        with:
+          image_path: './assets/thm-badge.png'
+          username: 'edwindominic7878'
+          user_id: ${{ secrets.THM_USER_ID }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit badge if changed
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add assets/thm-badge.png
-          git diff --cached --quiet && echo "No changes" && exit 0
+          git add assets/thm-badge.png || true
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
           git commit -m "chore: update TryHackMe badge"
-          git push
+          git push origin "HEAD:${{ github.ref_name }}"
