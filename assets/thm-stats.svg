@@ -1,69 +1,86 @@
 <svg width="480" height="160" viewBox="0 0 480 160" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="hdr" x1="0" y1="0" x2="1" y2="0">
+    <linearGradient id="lgrad" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0%" stop-color="#1f6feb" stop-opacity="0.12"/>
       <stop offset="100%" stop-color="#1f6feb" stop-opacity="0"/>
     </linearGradient>
   </defs>
 
+  <!-- card -->
   <rect width="480" height="160" rx="6" fill="#0d1117" stroke="#21262d" stroke-width="1"/>
-  <rect width="480" height="3" rx="1" fill="#1f6feb" opacity="0.9"/>
-  <rect x="0" y="0" width="155" height="160" rx="6" fill="url(#hdr)"/>
+  <!-- top accent -->
+  <rect width="480" height="2" rx="1" fill="#1f6feb" opacity="0.9"/>
+  <!-- left tint -->
+  <rect x="0" y="0" width="155" height="160" rx="6" fill="url(#lgrad)"/>
 
-  <!-- label -->
-  <text x="20" y="26" font-family="ui-monospace,'SF Mono',Consolas,monospace"
-    font-size="10" fill="#1f6feb" font-weight="600" letter-spacing="0.8">TRYHACKME</text>
+  <!-- THM label -->
+  <text x="20" y="26"
+    font-family="ui-monospace,'SF Mono',Consolas,monospace"
+    font-size="9" fill="#1f6feb" font-weight="600" letter-spacing="1">TRYHACKME</text>
 
   <!-- username -->
-  <text x="20" y="48" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"
+  <text x="20" y="47"
+    font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"
     font-size="15" fill="#e6edf3" font-weight="600">edwindominic7878</text>
 
   <!-- rank pill -->
-  <rect x="18" y="58" width="84" height="18" rx="9"
-    fill="#8b949e" opacity="0.15" stroke="#8b949e" stroke-width="0.8"/>
-  <text x="60" y="71"
+  <rect x="18" y="56" width="80" height="17" rx="8"
+    fill="#a371f7" opacity="0.15" stroke="#a371f7" stroke-width="0.8"/>
+  <text x="58" y="68"
     font-family="ui-monospace,'SF Mono',Consolas,monospace"
-    font-size="10" fill="#8b949e" text-anchor="middle" font-weight="600"
-    >Unranked</text>
+    font-size="9" fill="#a371f7" text-anchor="middle" font-weight="600">Seeker</text>
+
+  <!-- percentile -->
+  <text x="20" y="92"
+    font-family="ui-monospace,'SF Mono',Consolas,monospace"
+    font-size="11" fill="#a371f7" font-weight="600">Top 35%</text>
 
   <!-- divider 1 -->
   <line x1="155" y1="14" x2="155" y2="146" stroke="#21262d" stroke-width="1"/>
 
-  <!-- Points -->
-  <text x="178" y="50" font-family="ui-monospace,'SF Mono',Consolas,monospace"
-    font-size="24" fill="#e6edf3" font-weight="700">0</text>
-  <text x="178" y="66" font-family="-apple-system,BlinkMacSystemFont,sans-serif"
+  <!-- POINTS -->
+  <text x="178" y="48"
+    font-family="ui-monospace,'SF Mono',Consolas,monospace"
+    font-size="26" fill="#e6edf3" font-weight="700">34</text>
+  <text x="178" y="63"
+    font-family="-apple-system,BlinkMacSystemFont,sans-serif"
     font-size="9" fill="#6e7681" letter-spacing="0.8">POINTS</text>
 
-  <!-- Rooms -->
-  <text x="178" y="108" font-family="ui-monospace,'SF Mono',Consolas,monospace"
-    font-size="24" fill="#3fb950" font-weight="700">0</text>
-  <text x="178" y="124" font-family="-apple-system,BlinkMacSystemFont,sans-serif"
+  <!-- ROOMS -->
+  <text x="178" y="108"
+    font-family="ui-monospace,'SF Mono',Consolas,monospace"
+    font-size="26" fill="#3fb950" font-weight="700">13</text>
+  <text x="178" y="123"
+    font-family="-apple-system,BlinkMacSystemFont,sans-serif"
     font-size="9" fill="#6e7681" letter-spacing="0.8">ROOMS COMPLETED</text>
 
   <!-- divider 2 -->
   <line x1="318" y1="14" x2="318" y2="146" stroke="#21262d" stroke-width="1"/>
 
-  <!-- Streak -->
-  <text x="342" y="50" font-family="ui-monospace,'SF Mono',Consolas,monospace"
-    font-size="24" fill="#d29922" font-weight="700">0</text>
-  <text x="342" y="66" font-family="-apple-system,BlinkMacSystemFont,sans-serif"
+  <!-- STREAK -->
+  <text x="342" y="48"
+    font-family="ui-monospace,'SF Mono',Consolas,monospace"
+    font-size="26" fill="#d29922" font-weight="700">22</text>
+  <text x="342" y="63"
+    font-family="-apple-system,BlinkMacSystemFont,sans-serif"
     font-size="9" fill="#6e7681" letter-spacing="0.8">DAY STREAK</text>
 
-  <!-- Badges -->
-  <text x="342" y="108" font-family="ui-monospace,'SF Mono',Consolas,monospace"
-    font-size="24" fill="#bc8cff" font-weight="700">0</text>
-  <text x="342" y="124" font-family="-apple-system,BlinkMacSystemFont,sans-serif"
+  <!-- BADGES -->
+  <text x="342" y="108"
+    font-family="ui-monospace,'SF Mono',Consolas,monospace"
+    font-size="26" fill="#bc8cff" font-weight="700">2</text>
+  <text x="342" y="123"
+    font-family="-apple-system,BlinkMacSystemFont,sans-serif"
     font-size="9" fill="#6e7681" letter-spacing="0.8">BADGES EARNED</text>
 
-  <!-- updated timestamp -->
-  <text x="470" y="152"
+  <!-- timestamp -->
+  <text x="470" y="153"
     font-family="ui-monospace,'SF Mono',Consolas,monospace"
     font-size="8" fill="#30363d" text-anchor="end"
-    >Updated 2026-06-26 12:05 UTC</text>
+    >Updated 2026-06-26 17:26 UTC</text>
 
   <!-- bottom pulse -->
-  <rect x="0" y="157" width="480" height="1" fill="#1f6feb" opacity="0">
+  <rect x="0" y="158" width="480" height="1" fill="#1f6feb" opacity="0">
     <animate attributeName="opacity" values="0;0.5;0" dur="4s" repeatCount="indefinite"/>
   </rect>
 </svg>
