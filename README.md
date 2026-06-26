@@ -183,6 +183,10 @@ Independent security research across Indian public-sector and institutional infr
 
 [![TryHackMe](https://img.shields.io/badge/TryHackMe-edwindominic7878-212C42?style=for-the-badge&logo=tryhackme&logoColor=white&labelColor=0d1117)](https://tryhackme.com/p/edwindominic7878)
 
+<a href="https://tryhackme.com/p/edwindominic7878">
+  <img src="https://raw.githubusercontent.com/edwii-78/edwii-78/main/assets/thm-stats.svg"
+       width="480" alt="TryHackMe stats"/>
+</a>
 <br/>
 
 ![](https://img.shields.io/badge/SOC_Level_1-In_Progress-1f6feb?style=flat-square&labelColor=0d1117)
