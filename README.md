@@ -5,9 +5,7 @@
 <br/>
 
 <div align="center">
-
 <img src="https://readme-typing-svg.demolab.com?font=ui-monospace%2CSFMono-Regular%2C+SF+Mono%2CConsolas%2Cmonospace&size=13&duration=3500&pause=1200&color=8B949E&background=0D111700&center=true&vCenter=true&width=680&height=28&lines=Turning+noise+into+signal%2C+signals+into+action.;Detection+rules+that+catch+what+scanners+miss.;Every+log+is+a+clue.+Every+alert+is+a+story." alt=""/>
-
 </div>
 
 <br/>
@@ -81,48 +79,64 @@ Flutter + Firebase + Node.js. AES-256 end-to-end encryption applied before trans
 
 ## Stack
 
-<div align="center">
+<!-- Each category is a labelled group — no blob of flat badges -->
 
-![Wazuh](https://img.shields.io/badge/Wazuh-21262d?style=flat-square&logo=wazuh&logoColor=white)
-![Splunk](https://img.shields.io/badge/Splunk-21262d?style=flat-square&logo=splunk&logoColor=white)
-![Microsoft Sentinel](https://img.shields.io/badge/Microsoft_Sentinel-21262d?style=flat-square&logo=microsoftazure&logoColor=white)
-![Suricata](https://img.shields.io/badge/Suricata-21262d?style=flat-square&logoColor=white)
-![Sysmon](https://img.shields.io/badge/Sysmon-21262d?style=flat-square&logo=windows&logoColor=white)
-![Wireshark](https://img.shields.io/badge/Wireshark-21262d?style=flat-square&logo=wireshark&logoColor=white)
-![Grafana](https://img.shields.io/badge/Grafana-21262d?style=flat-square&logo=grafana&logoColor=white)
-![Redis](https://img.shields.io/badge/Redis-21262d?style=flat-square&logo=redis&logoColor=white)
-![Metasploit](https://img.shields.io/badge/Metasploit-21262d?style=flat-square&logoColor=white)
-![Burp Suite](https://img.shields.io/badge/Burp_Suite-21262d?style=flat-square&logoColor=white)
-![Autopsy](https://img.shields.io/badge/Autopsy-21262d?style=flat-square&logoColor=white)
-![Nmap](https://img.shields.io/badge/Nmap-21262d?style=flat-square&logoColor=white)
-![Pi-hole](https://img.shields.io/badge/Pi--hole-21262d?style=flat-square&logo=pi-hole&logoColor=white)
-![Raspberry Pi](https://img.shields.io/badge/Raspberry_Pi-21262d?style=flat-square&logo=raspberrypi&logoColor=white)
-![Kali Linux](https://img.shields.io/badge/Kali_Linux-21262d?style=flat-square&logo=kalilinux&logoColor=white)
-![Linux](https://img.shields.io/badge/Linux-21262d?style=flat-square&logo=linux&logoColor=white)
-![Windows Server](https://img.shields.io/badge/Windows_Server-21262d?style=flat-square&logo=windows&logoColor=white)
-![MITRE ATT&CK](https://img.shields.io/badge/MITRE_ATT%26CK-21262d?style=flat-square&logoColor=white)
-![Python](https://img.shields.io/badge/Python-21262d?style=flat-square&logo=python&logoColor=white)
-![Bash](https://img.shields.io/badge/Bash-21262d?style=flat-square&logo=gnubash&logoColor=white)
-![C++](https://img.shields.io/badge/C++-21262d?style=flat-square&logo=cplusplus&logoColor=white)
-![SPL](https://img.shields.io/badge/Splunk_SPL-21262d?style=flat-square&logoColor=white)
-![KQL](https://img.shields.io/badge/KQL-21262d?style=flat-square&logoColor=white)
-![Flutter](https://img.shields.io/badge/Flutter-21262d?style=flat-square&logo=flutter&logoColor=white)
+**Detection & SIEM**
 
-</div>
+![Wazuh](https://img.shields.io/badge/Wazuh-0d1117?style=flat-square&logo=wazuh&logoColor=79c0ff&labelColor=0d1117&color=0d2137)
+![Splunk](https://img.shields.io/badge/Splunk-0d1117?style=flat-square&logo=splunk&logoColor=79c0ff&labelColor=0d1117&color=0d2137)
+![Microsoft Sentinel](https://img.shields.io/badge/Microsoft_Sentinel-0d1117?style=flat-square&logo=microsoftazure&logoColor=79c0ff&labelColor=0d1117&color=0d2137)
+![Grafana](https://img.shields.io/badge/Grafana-0d1117?style=flat-square&logo=grafana&logoColor=79c0ff&labelColor=0d1117&color=0d2137)
+![Elastic](https://img.shields.io/badge/Elastic-0d1117?style=flat-square&logo=elastic&logoColor=79c0ff&labelColor=0d1117&color=0d2137)
+
+**Network & IDS/IPS**
+
+![Suricata](https://img.shields.io/badge/Suricata-0d1117?style=flat-square&logoColor=ff7b72&labelColor=0d1117&color=3d1f1f)
+![Wireshark](https://img.shields.io/badge/Wireshark-0d1117?style=flat-square&logo=wireshark&logoColor=ff7b72&labelColor=0d1117&color=3d1f1f)
+![Nmap](https://img.shields.io/badge/Nmap-0d1117?style=flat-square&logoColor=ff7b72&labelColor=0d1117&color=3d1f1f)
+![Pi-hole](https://img.shields.io/badge/Pi--hole-0d1117?style=flat-square&logo=pi-hole&logoColor=ff7b72&labelColor=0d1117&color=3d1f1f)
+![iptables](https://img.shields.io/badge/iptables-0d1117?style=flat-square&logo=linux&logoColor=ff7b72&labelColor=0d1117&color=3d1f1f)
+
+**Endpoint & Forensics**
+
+![Sysmon](https://img.shields.io/badge/Sysmon-0d1117?style=flat-square&logo=windows&logoColor=e3b341&labelColor=0d1117&color=2a1f08)
+![Autopsy](https://img.shields.io/badge/Autopsy-0d1117?style=flat-square&logoColor=e3b341&labelColor=0d1117&color=2a1f08)
+![Metasploit](https://img.shields.io/badge/Metasploit-0d1117?style=flat-square&logoColor=e3b341&labelColor=0d1117&color=2a1f08)
+![Burp Suite](https://img.shields.io/badge/Burp_Suite-0d1117?style=flat-square&logoColor=e3b341&labelColor=0d1117&color=2a1f08)
+![Kali Linux](https://img.shields.io/badge/Kali_Linux-0d1117?style=flat-square&logo=kalilinux&logoColor=e3b341&labelColor=0d1117&color=2a1f08)
+
+**Frameworks & Platforms**
+
+![MITRE ATT&CK](https://img.shields.io/badge/MITRE_ATT%26CK-0d1117?style=flat-square&logoColor=56d364&labelColor=0d1117&color=1f2d1f)
+![Raspberry Pi](https://img.shields.io/badge/Raspberry_Pi-0d1117?style=flat-square&logo=raspberrypi&logoColor=56d364&labelColor=0d1117&color=1f2d1f)
+![Linux](https://img.shields.io/badge/Linux-0d1117?style=flat-square&logo=linux&logoColor=56d364&labelColor=0d1117&color=1f2d1f)
+![Windows Server](https://img.shields.io/badge/Windows_Server-0d1117?style=flat-square&logo=windows&logoColor=56d364&labelColor=0d1117&color=1f2d1f)
+![Redis](https://img.shields.io/badge/Redis-0d1117?style=flat-square&logo=redis&logoColor=56d364&labelColor=0d1117&color=1f2d1f)
+
+**Languages & Query**
+
+![Python](https://img.shields.io/badge/Python-0d1117?style=flat-square&logo=python&logoColor=bc8cff&labelColor=0d1117&color=1f1a2d)
+![Bash](https://img.shields.io/badge/Bash-0d1117?style=flat-square&logo=gnubash&logoColor=bc8cff&labelColor=0d1117&color=1f1a2d)
+![C++](https://img.shields.io/badge/C++-0d1117?style=flat-square&logo=cplusplus&logoColor=bc8cff&labelColor=0d1117&color=1f1a2d)
+![SPL](https://img.shields.io/badge/Splunk_SPL-0d1117?style=flat-square&logoColor=bc8cff&labelColor=0d1117&color=1f1a2d)
+![KQL](https://img.shields.io/badge/KQL-0d1117?style=flat-square&logoColor=bc8cff&labelColor=0d1117&color=1f1a2d)
+![Flutter](https://img.shields.io/badge/Flutter-0d1117?style=flat-square&logo=flutter&logoColor=bc8cff&labelColor=0d1117&color=1f1a2d)
 
 ---
 
 ## Activity
 
+> Stats update every 24 hours. Languages card updates every 6 days. These are the most accurate public stats available without self-hosting.
+
 <div align="center">
 
-<img height="160" src="https://github-readme-stats.vercel.app/api?username=edwii-78&show_icons=true&theme=github_dark&bg_color=0d1117&title_color=e6edf3&text_color=8b949e&icon_color=1f6feb&border_color=21262d&include_all_commits=true&count_private=true&border_radius=6"/>
+<img height="170" src="https://github-readme-stats.vercel.app/api?username=edwii-78&show_icons=true&theme=github_dark&bg_color=0d1117&title_color=e6edf3&text_color=8b949e&icon_color=1f6feb&border_color=21262d&include_all_commits=true&count_private=true&border_radius=6&rank_icon=github&show=reviews,discussions_started,discussions_answered,prs_merged,prs_merged_percentage"/>
 &nbsp;
-<img height="160" src="https://github-readme-stats.vercel.app/api/top-langs/?username=edwii-78&layout=compact&theme=github_dark&bg_color=0d1117&title_color=e6edf3&text_color=8b949e&border_color=21262d&langs_count=6&border_radius=6"/>
+<img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=edwii-78&layout=compact&theme=github_dark&bg_color=0d1117&title_color=e6edf3&text_color=8b949e&border_color=21262d&langs_count=8&border_radius=6&hide=html,css"/>
 
 <br/><br/>
 
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=edwii-78&background=0d1117&ring=1f6feb&fire=f85149&currStreakLabel=e6edf3&sideLabels=8b949e&dates=6e7681&border=21262d&stroke=21262d&currStreakNum=e6edf3&sideNums=c9d1d9&border_radius=6"/>
+<img src="https://github-readme-streak-stats.herokuapp.com/?user=edwii-78&background=0d1117&ring=1f6feb&fire=f85149&currStreakLabel=e6edf3&sideLabels=8b949e&dates=6e7681&border=21262d&stroke=21262d&currStreakNum=e6edf3&sideNums=c9d1d9&border_radius=6&date_format=j%20M%5B%20Y%5D"/>
 
 </div>
 
@@ -188,12 +202,4 @@ Independent security research across Indian public-sector and institutional infr
 ![SOC Level 1](https://img.shields.io/badge/SOC_Level_1-In_Progress-1f6feb?style=flat-square&labelColor=0d1117)
 ![AI Security](https://img.shields.io/badge/AI_Security-In_Progress-1f6feb?style=flat-square&labelColor=0d1117)
 
-</div>
-
----
-
-<div align="center">
-<img src="https://komarev.com/ghpvc/?username=edwii-78&color=1f6feb&style=flat-square&label=profile+views&labelColor=0d1117"/>
-&nbsp;&nbsp;
-<img src="https://img.shields.io/badge/open_to_work-globally-238636?style=flat-square&labelColor=0d1117"/>
 </div>
