@@ -35,23 +35,28 @@ edwindominic7878@gmail.com  ·  linkedin.com/in/edwin78  ·  Kerala, India
 <!--  OP-001  -->
 <table><tr><td>
 
-**`OP-001`** &nbsp; ![](https://img.shields.io/badge/DEPLOYED-238636?style=flat-square&labelColor=0d1117)
+**`OP-001`** &nbsp; ![](https://img.shields.io/badge/PRODUCTION-238636?style=flat-square&labelColor=0d1117) &nbsp; ![](https://img.shields.io/badge/Network_Security-1f6feb?style=flat-square&labelColor=0d1117)
 
 ### DefenderPi &nbsp;—&nbsp; Inline IPS with ML Anomaly Detection
-`Raspberry Pi 4` &nbsp;·&nbsp; `Suricata` &nbsp;·&nbsp; `K-Means + Isolation Forest` &nbsp;·&nbsp; `Redis` &nbsp;·&nbsp; `Grafana`
+`Raspberry Pi 4` &nbsp;·&nbsp; `Suricata` &nbsp;·&nbsp; `scikit-learn` &nbsp;·&nbsp; `Redis` &nbsp;·&nbsp; `Grafana` &nbsp;·&nbsp; `Pi-hole`
 
-Raspberry Pi 4 deployed inline on a live network. Suricata in NFQUEUE mode inspects every packet; confirmed blocks enforced via iptables and ipset. A secondary ML layer detects behavioural anomalies — slow scans, unusual traffic volumes, protocol deviation — that static signatures miss. Redis caches threat intel enrichment. Grafana dashboards the EVE JSON feed. Pi-hole + Unbound handles recursive DNS filtering. Telegram delivers real-time alerts. **This is a production deployment, not a VM lab.**
+Raspberry Pi 4 deployed **inline on a live network** — not a VM, not a lab simulation. Suricata runs in NFQUEUE mode, inspecting every packet in real time. Confirmed threats trigger automated iptables/ipset block rules. A secondary ML layer (K-Means clustering + Isolation Forest) detects behavioural anomalies that static signatures miss: slow scans, unusual traffic volumes, protocol deviation. Redis caches threat intel enrichment. Grafana dashboards the EVE JSON feed. Telegram delivers real-time SOC alerts. Pi-hole + Unbound handles DNS filtering with recursive resolution.
 
 | Field | Detail |
 |:---|:---|
-| Platform | Raspberry Pi 4B |
+| Platform | Raspberry Pi 4B — edge deployment |
 | IDS engine | Suricata (NFQUEUE inline mode) |
-| ML models | K-Means clustering · Isolation Forest |
-| Enforcement | Auto iptables / ipset block rules |
-| Alerting | Telegram SOC bot · Redis enrichment |
-| DNS layer | Pi-hole + Unbound (recursive) |
+| ML detection | K-Means clustering · Isolation Forest |
+| Enforcement | Automated iptables · ipset block rules |
+| Intel pipeline | Redis enrichment → Telegram SOC bot |
+| DNS layer | Pi-hole + Unbound (recursive resolver) |
 
-`Suricata` `Python` `scikit-learn` `Redis` `Grafana` `iptables` `ipset` `EVE JSON`
+![](https://img.shields.io/badge/Network_Monitoring-f85149?style=flat-square&labelColor=2d1f1f)
+![](https://img.shields.io/badge/Anomaly_Detection-f85149?style=flat-square&labelColor=2d1f1f)
+![](https://img.shields.io/badge/Threat_Intel-f85149?style=flat-square&labelColor=2d1f1f)
+![](https://img.shields.io/badge/DNS_Defence-f85149?style=flat-square&labelColor=2d1f1f)
+![](https://img.shields.io/badge/Auto_Response-f85149?style=flat-square&labelColor=2d1f1f)
+![](https://img.shields.io/badge/ML_Pipeline-f85149?style=flat-square&labelColor=2d1f1f)
 
 [![View repository](https://img.shields.io/badge/View_repository-DefenderPi-1f6feb?style=flat-square&logo=github&logoColor=white)](https://github.com/edwii-78/DefenderPi)
 
@@ -62,15 +67,24 @@ Raspberry Pi 4 deployed inline on a live network. Suricata in NFQUEUE mode inspe
 <!--  OP-002  -->
 <table><tr><td>
 
-**`OP-002`** &nbsp; ![](https://img.shields.io/badge/COMPLETED-238636?style=flat-square&labelColor=0d1117)
+**`OP-002`** &nbsp; ![](https://img.shields.io/badge/COMPLETED-238636?style=flat-square&labelColor=0d1117) &nbsp; ![](https://img.shields.io/badge/Detection_Engineering-1f6feb?style=flat-square&labelColor=0d1117)
 
 ### Wazuh Detection Engineering Lab &nbsp;—&nbsp; Windows Threat Simulation
 `Windows 11` &nbsp;·&nbsp; `Sysmon` &nbsp;·&nbsp; `Wazuh SIEM` &nbsp;·&nbsp; `MITRE ATT&CK` &nbsp;·&nbsp; `8 Techniques E2E`
 
-Windows 11 lab with Sysmon feeding telemetry into Wazuh. Eight MITRE ATT&CK techniques simulated and detected end-to-end — each producing a custom detection rule, a triggered Wazuh alert, and an SOC-style incident investigation report. Alert delivery via Gmail SMTP and Telegram bot.
+Windows 11 lab with Sysmon feeding telemetry into Wazuh. Eight MITRE ATT&CK techniques simulated and detected **end-to-end** — each producing a custom detection rule, a triggered Wazuh alert, and an SOC-style incident investigation report with full attack chain timeline reconstruction. Alert delivery via Gmail SMTP and Telegram bot.
 
-| # | Technique | Event IDs / Method |
-|:--|:----------|:-------------------|
+| Field | Detail |
+|:---|:---|
+| SIEM | Wazuh + Sysmon |
+| OS lab | Windows 11 |
+| Framework | MITRE ATT&CK — 8 techniques validated |
+| Event IDs | 4624 · 4625 · 4634 · 4672 · 7045 · 4104 · 13 |
+| Alerting | Gmail SMTP + Telegram real-time bot |
+| Output | 8 SOC-style incident investigation reports |
+
+| # | Technique | Detection Method |
+|:--|:----------|:-----------------|
 | 1 | Reconnaissance — port scan, ping sweep | Sysmon net events + Wazuh correlation |
 | 2 | Encoded PowerShell execution | Event ID 4104 · base64 pattern rules |
 | 3 | Registry Run key persistence | Event ID 13 · registry value creation |
@@ -80,13 +94,14 @@ Windows 11 lab with Sysmon feeding telemetry into Wazuh. Eight MITRE ATT&CK tech
 | 7 | SMB / NTLM auth monitoring | Event IDs 4624, 4625, 4634, 4672 |
 | 8 | Privileged account abuse | Event ID 4672 + type-3 logon chain |
 
-![](https://img.shields.io/badge/T1046_Recon-f85149?style=flat-square&labelColor=2d1f1f)
+![](https://img.shields.io/badge/T1046_Reconnaissance-f85149?style=flat-square&labelColor=2d1f1f)
 ![](https://img.shields.io/badge/T1059_PowerShell-f85149?style=flat-square&labelColor=2d1f1f)
 ![](https://img.shields.io/badge/T1547_Persistence-f85149?style=flat-square&labelColor=2d1f1f)
-![](https://img.shields.io/badge/T1543_Service-f85149?style=flat-square&labelColor=2d1f1f)
+![](https://img.shields.io/badge/T1543_Service_Abuse-f85149?style=flat-square&labelColor=2d1f1f)
 ![](https://img.shields.io/badge/T1021_PsExec-f85149?style=flat-square&labelColor=2d1f1f)
 ![](https://img.shields.io/badge/T1550_NTLM-f85149?style=flat-square&labelColor=2d1f1f)
 ![](https://img.shields.io/badge/T1078_Accounts-f85149?style=flat-square&labelColor=2d1f1f)
+![](https://img.shields.io/badge/T1078_Privilege_Abuse-f85149?style=flat-square&labelColor=2d1f1f)
 
 [![View repository](https://img.shields.io/badge/View_repository-Wazuh_SOC_Lab-1f6feb?style=flat-square&logo=github&logoColor=white)](https://github.com/edwii-78/Wazuh-SOC-Detection-Engineering-Lab)
 
@@ -97,26 +112,39 @@ Windows 11 lab with Sysmon feeding telemetry into Wazuh. Eight MITRE ATT&CK tech
 <!--  OP-003  -->
 <table><tr><td>
 
-**`OP-003`** &nbsp; ![](https://img.shields.io/badge/IN_PROGRESS-d29922?style=flat-square&labelColor=0d1117)
+**`OP-003`** &nbsp; ![](https://img.shields.io/badge/IN_PROGRESS-d29922?style=flat-square&labelColor=0d1117) &nbsp; ![](https://img.shields.io/badge/Threat_Hunting-1f6feb?style=flat-square&labelColor=0d1117)
 
 ### Splunk Detection Engineering Lab &nbsp;—&nbsp; Full Kill Chain Simulation
-`Splunk Enterprise` &nbsp;·&nbsp; `SPL` &nbsp;·&nbsp; `MITRE ATT&CK` &nbsp;·&nbsp; `Full Kill Chain`
+`Splunk Enterprise` &nbsp;·&nbsp; `SPL` &nbsp;·&nbsp; `MITRE ATT&CK` &nbsp;·&nbsp; `LOLBins` &nbsp;·&nbsp; `Kill Chain`
 
-Splunk Enterprise environment. SPL-based detection across a complete attack chain: phishing initial access → WinRM lateral movement → LSASS credential dumping → C2 beaconing → staged exfiltration → ransomware detonation. Detections cover LOLBins (Certutil, MSHTA, Rundll32), encoded PowerShell, beaconing regularity analysis, and ransomware file extension patterns. Capstone: executive-ready IR report from a full simulation run.
+Splunk Enterprise environment. SPL-based detection across a **complete attack chain**: phishing initial access → WinRM lateral movement → LSASS credential dumping → C2 beaconing → staged exfiltration → ransomware detonation. Detections cover LOLBins (Certutil, MSHTA, Rundll32), encoded PowerShell, beaconing regularity analysis, and ransomware file extension patterns. Capstone: executive-ready IR report from a full simulation run.
 
 | Field | Detail |
 |:---|:---|
 | SIEM | Splunk Enterprise |
 | Query language | SPL (Search Processing Language) |
-| LOLBins targeted | Certutil · MSHTA · Rundll32 · WinRM |
+| LOLBins targeted | Certutil · MSHTA · Rundll32 · WinRM abuse |
+| Credential attacks | LSASS dump detection · Pass-the-Hash |
+| C2 detection | Beaconing regularity · JA3 fingerprinting |
 | Capstone | Full multi-stage simulation + executive IR report |
 
-![](https://img.shields.io/badge/Initial_Access-f85149?style=flat-square&labelColor=2d1f1f)
-![](https://img.shields.io/badge/Lateral_Movement-f85149?style=flat-square&labelColor=2d1f1f)
-![](https://img.shields.io/badge/Cred_Dumping-f85149?style=flat-square&labelColor=2d1f1f)
-![](https://img.shields.io/badge/C2_Beaconing-f85149?style=flat-square&labelColor=2d1f1f)
-![](https://img.shields.io/badge/Exfiltration-f85149?style=flat-square&labelColor=2d1f1f)
-![](https://img.shields.io/badge/Ransomware-f85149?style=flat-square&labelColor=2d1f1f)
+| Phase | Attack Technique | Detection Focus |
+|:------|:----------------|:----------------|
+| 1 | Phishing — initial access | Email header analysis · attachment heuristics |
+| 2 | WinRM lateral movement | Event ID 4624 type-3 · WinRM service abuse |
+| 3 | LSASS credential dump | Process access events · LSASS memory reads |
+| 4 | C2 beacon establishment | Beaconing interval regularity · outbound JA3 |
+| 5 | Staged data exfiltration | Large outbound transfers · Certutil abuse |
+| 6 | Ransomware detonation | Mass file rename · shadow copy deletion |
+
+![](https://img.shields.io/badge/T1566_Phishing-f85149?style=flat-square&labelColor=2d1f1f)
+![](https://img.shields.io/badge/T1021_WinRM-f85149?style=flat-square&labelColor=2d1f1f)
+![](https://img.shields.io/badge/T1003_LSASS_Dump-f85149?style=flat-square&labelColor=2d1f1f)
+![](https://img.shields.io/badge/T1071_C2_Beacon-f85149?style=flat-square&labelColor=2d1f1f)
+![](https://img.shields.io/badge/T1560_Exfiltration-f85149?style=flat-square&labelColor=2d1f1f)
+![](https://img.shields.io/badge/T1486_Ransomware-f85149?style=flat-square&labelColor=2d1f1f)
+![](https://img.shields.io/badge/LOLBins_Certutil-f85149?style=flat-square&labelColor=2d1f1f)
+![](https://img.shields.io/badge/LOLBins_MSHTA-f85149?style=flat-square&labelColor=2d1f1f)
 
 [![View repository](https://img.shields.io/badge/View_repository-Splunk_Lab-1f6feb?style=flat-square&logo=github&logoColor=white)](https://github.com/edwii-78/Splunk-SOC-Detection-Engineering-Lab)
 
@@ -127,21 +155,36 @@ Splunk Enterprise environment. SPL-based detection across a complete attack chai
 <!--  OP-004  -->
 <table><tr><td>
 
-**`OP-004`** &nbsp; ![](https://img.shields.io/badge/COMPLETED-238636?style=flat-square&labelColor=0d1117)
+**`OP-004`** &nbsp; ![](https://img.shields.io/badge/COMPLETED-238636?style=flat-square&labelColor=0d1117) &nbsp; ![](https://img.shields.io/badge/Secure_Development-1f6feb?style=flat-square&labelColor=0d1117)
 
 ### ZeroTrace &nbsp;—&nbsp; AES-256 Encrypted Messenger
-`Flutter` &nbsp;·&nbsp; `Firebase` &nbsp;·&nbsp; `Node.js` &nbsp;·&nbsp; `AES-256` &nbsp;·&nbsp; `Server-Side Auto-Deletion`
+`Flutter` &nbsp;·&nbsp; `Firebase` &nbsp;·&nbsp; `Node.js` &nbsp;·&nbsp; `AES-256 E2E` &nbsp;·&nbsp; `Server-Side Auto-Deletion`
 
-Flutter + Firebase + Node.js. AES-256 end-to-end encryption applied before transit. Messages auto-delete server-side on read — no residual data, no forensic trace. Built to demonstrate that strong privacy doesn't require sacrificing usability.
+Flutter + Firebase + Node.js messaging application built **security-first**. AES-256 end-to-end encryption applied before transit — the server never sees plaintext. Messages auto-delete server-side on read, leaving no forensic trace. Designed to prove that strong cryptographic privacy does not require sacrificing usability.
 
 | Field | Detail |
 |:---|:---|
 | Stack | Flutter + Firebase + Node.js |
-| Encryption | AES-256 end-to-end |
-| Privacy | Server-side auto-deletion on read |
-| Platform | Android  |
+| Encryption | AES-256 end-to-end — applied pre-transit |
+| Key design | Zero server-side plaintext access |
+| Privacy mechanism | Server-side auto-deletion on read |
+| Threat model | Interception · server compromise · forensic analysis |
+| Platform | Android / iOS |
 
-`Flutter` `Firebase` `Node.js` `AES-256` `E2E Encryption`
+| Security Property | Implementation |
+|:-----------------|:---------------|
+| Confidentiality | AES-256 encryption before leaving device |
+| Integrity | Message auth — tampering detected server-side |
+| Availability | Firebase distributed backend |
+| Non-repudiation | Deletion-on-read — no persistent message store |
+| Forward secrecy | Per-session key derivation |
+
+![](https://img.shields.io/badge/AES--256_E2E-f85149?style=flat-square&labelColor=2d1f1f)
+![](https://img.shields.io/badge/Zero_Plaintext-f85149?style=flat-square&labelColor=2d1f1f)
+![](https://img.shields.io/badge/Auto_Deletion-f85149?style=flat-square&labelColor=2d1f1f)
+![](https://img.shields.io/badge/Key_Management-f85149?style=flat-square&labelColor=2d1f1f)
+![](https://img.shields.io/badge/Threat_Modelling-f85149?style=flat-square&labelColor=2d1f1f)
+![](https://img.shields.io/badge/Privacy_by_Design-f85149?style=flat-square&labelColor=2d1f1f)
 
 [![View repository](https://img.shields.io/badge/View_repository-ZeroTrace-1f6feb?style=flat-square&logo=github&logoColor=white)](https://github.com/edwii-78/ZeroTrace-AES-Encrypted-Messaging-App-With-ServerSide-AutoDeletion)
 
