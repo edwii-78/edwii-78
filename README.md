@@ -130,7 +130,7 @@ Flutter + Firebase + Node.js. AES-256 end-to-end encryption applied before trans
 
 **SIEM Log Stream &nbsp;·&nbsp; Contribution Activity**
 
-> Each cell is a log event. The red scan line is the detection sweep — the same way a SIEM scans incoming telemetry.
+> Each cell is a log event. The red scan line is the detection sweep — same way a SIEM scans incoming telemetry.
 
 <div align="center">
 <picture>
@@ -138,12 +138,6 @@ Flutter + Firebase + Node.js. AES-256 end-to-end encryption applied before trans
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/edwii-78/edwii-78/output/soc-log-stream.svg"/>
   <img alt="SOC Log Stream — Contribution Activity" src="https://raw.githubusercontent.com/edwii-78/edwii-78/output/soc-log-stream-dark.svg"/>
 </picture>
-</div>
-
-<br/>
-
-<div align="center">
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=edwii-78&bg_color=0d1117&color=8b949e&line=1f6feb&point=e6edf3&area=true&hide_border=false&border_color=21262d&area_color=0d2137&radius=6" alt="Contribution activity"/>
 </div>
 
 ---
@@ -181,17 +175,18 @@ Independent security research across Indian public-sector and institutional infr
 
 <div align="center">
 
-[![TryHackMe](https://img.shields.io/badge/TryHackMe-edwindominic7878-212C42?style=for-the-badge&logo=tryhackme&logoColor=white&labelColor=0d1117)](https://tryhackme.com/p/edwindominic7878)
-
 <a href="https://tryhackme.com/p/edwindominic7878">
   <img src="https://raw.githubusercontent.com/edwii-78/edwii-78/main/assets/thm-stats.svg"
-       width="480" alt="TryHackMe stats"/>
+       width="740" alt="TryHackMe stats — edwindominic7878"/>
 </a>
-<br/>
 
-![](https://img.shields.io/badge/SOC_Level_1-In_Progress-1f6feb?style=flat-square&labelColor=0d1117)
-![](https://img.shields.io/badge/AI_Security-In_Progress-1f6feb?style=flat-square&labelColor=0d1117)
-![](https://img.shields.io/badge/Pre--Security-Completed-238636?style=flat-square&labelColor=0d1117)
+<br/><br/>
+
+[![TryHackMe Profile](https://img.shields.io/badge/TryHackMe-edwindominic7878-212C42?style=flat-square&logo=tryhackme&logoColor=white&labelColor=0d1117)](https://tryhackme.com/p/edwindominic7878)
+&nbsp;
+![Pre-Security](https://img.shields.io/badge/Pre--Security-Completed-238636?style=flat-square&labelColor=0d1117)
+![SOC Level 1](https://img.shields.io/badge/SOC_Level_1-In_Progress-1f6feb?style=flat-square&labelColor=0d1117)
+![AI Security](https://img.shields.io/badge/AI_Security-In_Progress-1f6feb?style=flat-square&labelColor=0d1117)
 
 </div>
 
