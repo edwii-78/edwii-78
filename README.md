@@ -139,7 +139,7 @@ Flutter + Firebase + Node.js. AES-256 end-to-end encryption applied before trans
 | Stack | Flutter + Firebase + Node.js |
 | Encryption | AES-256 end-to-end |
 | Privacy | Server-side auto-deletion on read |
-| Platform | Android / iOS |
+| Platform | Android  |
 
 `Flutter` `Firebase` `Node.js` `AES-256` `E2E Encryption`
 
