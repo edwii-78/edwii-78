@@ -10,10 +10,10 @@ import os
 STATS = {
     "username":   "edwindominic7878",
     "rank":       "Seeker",
-    "percentile": "Top 9%",
+    "percentile": "Top 30%",
     "points":     34,
-    "rooms":      13,
-    "streak":     26,
+    "rooms":      15,
+    "streak":     29,
     "badges":     2,
 }
 # ─────────────────────────────────────────────────────────────────────────────
