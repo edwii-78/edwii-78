@@ -12,9 +12,9 @@ STATS = {
     "rank":       "Seeker",
     "percentile": "Top 30%",
     "points":     34,
-    "rooms":      15,
-    "streak":     29,
-    "badges":     2,
+    "rooms":      16,
+    "streak":     42,
+    "badges":     3,
 }
 # ─────────────────────────────────────────────────────────────────────────────
 
