@@ -88,7 +88,7 @@
     font-size="9" fill="#6e7681" letter-spacing="1.5">ROOMS COMPLETED</text>
   <text x="420" y="105"
     font-family="ui-monospace,'SF Mono',Consolas,monospace"
-    font-size="46" fill="#3fb950" font-weight="700">15</text>
+    font-size="46" fill="#3fb950" font-weight="700">16</text>
   <rect x="420" y="118" width="80" height="2" rx="1" fill="#21262d"/>
   <rect x="420" y="118" width="80" height="2" rx="1" fill="#3fb950" opacity="0.5"/>
 
@@ -98,7 +98,7 @@
     font-size="9" fill="#6e7681" letter-spacing="1.5">DAY STREAK</text>
   <text x="590" y="105"
     font-family="ui-monospace,'SF Mono',Consolas,monospace"
-    font-size="46" fill="#d29922" font-weight="700">29</text>
+    font-size="46" fill="#d29922" font-weight="700">42</text>
   <rect x="590" y="118" width="80" height="2" rx="1" fill="#21262d"/>
   <rect x="590" y="118" width="80" height="2" rx="1" fill="#d29922" opacity="0.5"/>
 
@@ -108,7 +108,7 @@
     font-size="9" fill="#6e7681" letter-spacing="1.5">BADGES EARNED</text>
   <text x="230" y="186"
     font-family="ui-monospace,'SF Mono',Consolas,monospace"
-    font-size="36" fill="#bc8cff" font-weight="700">2</text>
+    font-size="36" fill="#bc8cff" font-weight="700">3</text>
 
   <!-- paths completed label -->
   <text x="420" y="152"
@@ -145,7 +145,7 @@
   <!-- timestamp right -->
   <text x="730" y="222"
     font-family="ui-monospace,'SF Mono',Consolas,monospace"
-    font-size="8" fill="#30363d" text-anchor="end">Updated 2026-07-03 15:24 UTC</text>
+    font-size="8" fill="#30363d" text-anchor="end">Updated 2026-07-16 14:39 UTC</text>
 
   <!-- bottom animated pulse -->
   <rect x="0" y="228" width="740" height="2" rx="1" fill="url(#botbar)" opacity="0">
