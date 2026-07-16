@@ -34,7 +34,7 @@ edwindominic7878@gmail.com  ·  linkedin.com/in/edwin78  ·  Kerala, India
 
 <table><tr><td>
 
-**`OP-001`** &nbsp; ![](https://img.shields.io/badge/PRODUCTION-238636?style=flat-square&labelColor=0d1117) &nbsp; ![](https://img.shields.io/badge/Network_Security-1f6feb?style=flat-square&labelColor=0d1117)
+**`OP-001`** &nbsp; ![](https://img.shields.io/badge/Completed-238636?style=flat-square&labelColor=0d1117) &nbsp; ![](https://img.shields.io/badge/Network_Security-1f6feb?style=flat-square&labelColor=0d1117)
 
 ### DefenderPi &nbsp;—&nbsp; Inline IPS with ML Anomaly Detection
 `Raspberry Pi 4` &nbsp;·&nbsp; `Suricata` &nbsp;·&nbsp; `scikit-learn` &nbsp;·&nbsp; `Redis` &nbsp;·&nbsp; `Grafana` &nbsp;·&nbsp; `Pi-hole`
