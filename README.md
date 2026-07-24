@@ -14,11 +14,9 @@
 
 ## About
 
-SOC analyst building detection engineering labs from scratch — designing environments, simulating attacks, writing detection rules, and producing incident reports that mirror real SOC workflows.
+SOC analyst building detection engineering labs and producing professional-grade investigation reports — not tutorials, not guided walkthroughs. Every project here is a real environment designed, attacked, and defended.
 
-Core stack: **Wazuh** and **Splunk** for SIEM, **Sysmon** for Windows telemetry, **Suricata** for network IDS, **MITRE ATT&CK** as the detection framework. Eight techniques validated end-to-end in a live Windows 11 lab. A Raspberry Pi 4 runs as an inline IPS with ML-backed anomaly detection on my home network — production, not a VM.
-
-Independent vulnerability research across Indian government and institutional portals — 15+ disclosures, IIT Madras acknowledged, CERT-In Hall of Fame nominated twice.
+Core stack: **Wazuh** and **Splunk** for SIEM, **Sysmon** for Windows telemetry, **Suricata** for network IDS, **MITRE ATT&CK** as the detection framework. Independently investigated phishing campaigns and live malware samples. Deployed a Raspberry Pi 4 as an inline IPS with ML anomaly detection on a production network. 15+ vulnerability disclosures to Indian government portals, IIT Madras acknowledged, CERT-In Hall of Fame nominated twice.
 
 Building toward **Microsoft Sentinel**, **CNSP**, and **AWS Cloud Practitioner**. Open to SOC analyst, detection engineer, and threat hunting roles — available to relocate anywhere.
 
@@ -28,13 +26,77 @@ edwindominic7878@gmail.com  ·  linkedin.com/in/edwin78  ·  Kerala, India
 
 ---
 
-## Projects
+## Investigations & Projects
 
 <br/>
 
+<!--  OP-001  -->
 <table><tr><td>
 
-**`OP-001`** &nbsp; ![](https://img.shields.io/badge/COMPLETED-238636?style=flat-square&labelColor=0d1117) &nbsp; ![](https://img.shields.io/badge/Network_Security-1f6feb?style=flat-square&labelColor=0d1117)
+**`OP-001`** &nbsp; ![](https://img.shields.io/badge/COMPLETED-238636?style=flat-square&labelColor=0d1117) &nbsp; ![](https://img.shields.io/badge/Malware_Analysis-f85149?style=flat-square&labelColor=2d1f1f)
+
+### AsyncRAT v0.5.8 — Behavioral Malware Analysis & SOC Investigation
+`Triage Sandbox` &nbsp;·&nbsp; `Static Config Extraction` &nbsp;·&nbsp; `MITRE ATT&CK` &nbsp;·&nbsp; `Splunk SPL Hunting`
+
+Sample `95dedfab...fd2b76a2` identified as **AsyncRAT v0.5.8** via static configuration extraction and dynamic sandbox detonation on Triage (Windows 11 21H2 x64). Malicious score: 10/10. Static analysis recovered live C2 infrastructure, AES encryption key, mutex, install path, and persistence filename — all without executing the sample. Dynamic detonation confirmed installation to roaming profile, OnLogon scheduled task requesting highest run level, SeDebugPrivilege acquisition, host/locale reconnaissance, and 25 outbound C2 connections across four ports to attacker-controlled infrastructure. Persistence mechanism validated: the payload was observed relaunching as an unparented top-level process, confirming the scheduled task fired correctly.
+
+| Field | Detail |
+|:---|:---|
+| Malware family | AsyncRAT v0.5.8 — confirmed RAT with live C2 |
+| Static extraction | AES key · mutex `LtyEIcOsTiXq` · C2 hosts · install path |
+| Persistence | `schtasks /create /sc onlogon /rl highest` → `windown10.exe` |
+| C2 infrastructure | 6 domains · 34.76.205.124 · ports 80, 443, 4444, 5555 observed |
+| Privilege | SeDebugPrivilege acquired — process handle access to arbitrary processes |
+| Hunting queries | 3 Splunk SPL queries written: task name, C2 domains/IP, installer-batch pattern |
+
+![](https://img.shields.io/badge/T1059.003_CMD-f85149?style=flat-square&labelColor=2d1f1f)
+![](https://img.shields.io/badge/T1053.005_Sched_Task-f85149?style=flat-square&labelColor=2d1f1f)
+![](https://img.shields.io/badge/T1082_Sys_Discovery-f85149?style=flat-square&labelColor=2d1f1f)
+![](https://img.shields.io/badge/T1614.001_Lang_Discovery-f85149?style=flat-square&labelColor=2d1f1f)
+![](https://img.shields.io/badge/SeDebugPrivilege-f85149?style=flat-square&labelColor=2d1f1f)
+
+[![View repository](https://img.shields.io/badge/View_repository-AsyncRAT_Analysis-1f6feb?style=flat-square&logo=github&logoColor=white)](https://github.com/edwii-78)
+
+</td></tr></table>
+
+<br/>
+
+<!--  OP-002  -->
+<table><tr><td>
+
+**`OP-002`** &nbsp; ![](https://img.shields.io/badge/COMPLETED-238636?style=flat-square&labelColor=0d1117) &nbsp; ![](https://img.shields.io/badge/Phishing_Investigation-f85149?style=flat-square&labelColor=2d1f1f)
+
+### Email Phishing Investigation — UPS Brand Impersonation / Credential Harvesting
+`Header Forensics` &nbsp;·&nbsp; `SPF/DKIM/DMARC Analysis` &nbsp;·&nbsp; `Threat Intel Enrichment` &nbsp;·&nbsp; `IOC Analysis`
+
+Full SOC-grade incident investigation of a credential phishing email impersonating UPS, delivered via a legitimately authenticated Microsoft 365 tenant. The sender domain passed SPF, DKIM, and ARC — demonstrating the core analyst lesson: authentication proves domain control, not sender legitimacy. Correlated header forensics, HTML/URL analysis, redirect chain tracing (`t.co` → `zoomertar.com`), and threat-intelligence enrichment (VT, passive DNS) across all four IOC types to produce a high-confidence verdict. Hidden tracking pixels on `199.192.27.195` confirmed mailbox fingerprinting. Attack chain reconstructed across 10 stages. Containment, detection, and hunting recommendations written.
+
+| Field | Detail |
+|:---|:---|
+| Delivery method | HTML email via Microsoft 365 / Exchange Online — SPF/DKIM/ARC pass |
+| Phishing domain | `zoomertar.com` — 2/91 VT · Redemption Period · disposable infra |
+| Tracking server | `199.192.27.195` — 135 passive DNS resolutions, PayPal/Amazon phish history |
+| Redirect chain | `t.co/f9tVtkdJm3` → `zoomertar.com` (offline at investigation time) |
+| Key finding | Authenticated Microsoft 365 tenant used to inherit IP reputation and bypass filters |
+| Output | Full IR report: IOC table · attack chain · MITRE mapping · containment plan |
+
+![](https://img.shields.io/badge/T1566_Phishing-f85149?style=flat-square&labelColor=2d1f1f)
+![](https://img.shields.io/badge/T1566.002_Spearphishing-f85149?style=flat-square&labelColor=2d1f1f)
+![](https://img.shields.io/badge/T1199_Trusted_Relationship-f85149?style=flat-square&labelColor=2d1f1f)
+![](https://img.shields.io/badge/T1589_Victim_Recon-f85149?style=flat-square&labelColor=2d1f1f)
+![](https://img.shields.io/badge/T1204_User_Execution-f85149?style=flat-square&labelColor=2d1f1f)
+![](https://img.shields.io/badge/Header_Forensics-f85149?style=flat-square&labelColor=2d1f1f)
+
+[![View repository](https://img.shields.io/badge/View_repository-Phishing_Investigation-1f6feb?style=flat-square&logo=github&logoColor=white)](https://github.com/edwii-78)
+
+</td></tr></table>
+
+<br/>
+
+<!--  OP-003  -->
+<table><tr><td>
+
+**`OP-003`** &nbsp; ![](https://img.shields.io/badge/PRODUCTION-238636?style=flat-square&labelColor=0d1117) &nbsp; ![](https://img.shields.io/badge/Network_Security-1f6feb?style=flat-square&labelColor=0d1117)
 
 ### DefenderPi &nbsp;—&nbsp; Inline IPS with ML Anomaly Detection
 `Raspberry Pi 4` &nbsp;·&nbsp; `Suricata` &nbsp;·&nbsp; `scikit-learn` &nbsp;·&nbsp; `Redis` &nbsp;·&nbsp; `Grafana` &nbsp;·&nbsp; `Pi-hole`
@@ -62,9 +124,10 @@ Raspberry Pi 4 deployed **inline on a live network** — not a VM. Suricata in N
 
 <br/>
 
+<!--  OP-004  -->
 <table><tr><td>
 
-**`OP-002`** &nbsp; ![](https://img.shields.io/badge/COMPLETED-238636?style=flat-square&labelColor=0d1117) &nbsp; ![](https://img.shields.io/badge/Detection_Engineering-1f6feb?style=flat-square&labelColor=0d1117)
+**`OP-004`** &nbsp; ![](https://img.shields.io/badge/COMPLETED-238636?style=flat-square&labelColor=0d1117) &nbsp; ![](https://img.shields.io/badge/Detection_Engineering-1f6feb?style=flat-square&labelColor=0d1117)
 
 ### Wazuh Detection Engineering Lab &nbsp;—&nbsp; Windows Threat Simulation
 `Windows 11` &nbsp;·&nbsp; `Sysmon` &nbsp;·&nbsp; `Wazuh` &nbsp;·&nbsp; `MITRE ATT&CK` &nbsp;·&nbsp; `8 TTPs E2E`
@@ -96,9 +159,10 @@ Windows 11 lab with Sysmon telemetry feeding Wazuh. Eight MITRE ATT&CK technique
 
 <br/>
 
+<!--  OP-005  -->
 <table><tr><td>
 
-**`OP-003`** &nbsp; ![](https://img.shields.io/badge/IN_PROGRESS-d29922?style=flat-square&labelColor=0d1117) &nbsp; ![](https://img.shields.io/badge/Threat_Hunting-1f6feb?style=flat-square&labelColor=0d1117)
+**`OP-005`** &nbsp; ![](https://img.shields.io/badge/IN_PROGRESS-d29922?style=flat-square&labelColor=0d1117) &nbsp; ![](https://img.shields.io/badge/Threat_Hunting-1f6feb?style=flat-square&labelColor=0d1117)
 
 ### Splunk Detection Engineering Lab &nbsp;—&nbsp; Full Kill Chain Simulation
 `Splunk Enterprise` &nbsp;·&nbsp; `SPL` &nbsp;·&nbsp; `MITRE ATT&CK` &nbsp;·&nbsp; `LOLBins` &nbsp;·&nbsp; `Kill Chain`
@@ -128,9 +192,10 @@ Splunk Enterprise environment. SPL-based detection across a complete attack chai
 
 <br/>
 
+<!--  OP-006  -->
 <table><tr><td>
 
-**`OP-004`** &nbsp; ![](https://img.shields.io/badge/COMPLETED-238636?style=flat-square&labelColor=0d1117) &nbsp; ![](https://img.shields.io/badge/Secure_Development-1f6feb?style=flat-square&labelColor=0d1117)
+**`OP-006`** &nbsp; ![](https://img.shields.io/badge/COMPLETED-238636?style=flat-square&labelColor=0d1117) &nbsp; ![](https://img.shields.io/badge/Secure_Development-1f6feb?style=flat-square&labelColor=0d1117)
 
 ### ZeroTrace &nbsp;—&nbsp; AES-256 Encrypted Messenger
 `Flutter` &nbsp;·&nbsp; `Firebase` &nbsp;·&nbsp; `Node.js` &nbsp;·&nbsp; `AES-256 E2E` &nbsp;·&nbsp; `Auto-Deletion`
@@ -152,11 +217,10 @@ Flutter + Firebase + Node.js messaging app built security-first. AES-256 encrypt
 [![View repository](https://img.shields.io/badge/View_repository-ZeroTrace-1f6feb?style=flat-square&logo=github&logoColor=white)](https://github.com/edwii-78/ZeroTrace-AES-Encrypted-Messaging-App-With-ServerSide-AutoDeletion)
 
 </td></tr></table>
+
 ---
 
 ## Stack
-
-<!-- Each category is a labelled group — no blob of flat badges -->
 
 **Detection & SIEM**
 
@@ -178,32 +242,32 @@ Flutter + Firebase + Node.js messaging app built security-first. AES-256 encrypt
 
 ![Sysmon](https://img.shields.io/badge/Sysmon-0d1117?style=flat-square&logo=windows&logoColor=e3b341&labelColor=0d1117&color=2a1f08)
 ![Autopsy](https://img.shields.io/badge/Autopsy-0d1117?style=flat-square&logoColor=e3b341&labelColor=0d1117&color=2a1f08)
+![Triage_Sandbox](https://img.shields.io/badge/Triage_Sandbox-0d1117?style=flat-square&logoColor=e3b341&labelColor=0d1117&color=2a1f08)
 ![Metasploit](https://img.shields.io/badge/Metasploit-0d1117?style=flat-square&logoColor=e3b341&labelColor=0d1117&color=2a1f08)
 ![Burp Suite](https://img.shields.io/badge/Burp_Suite-0d1117?style=flat-square&logoColor=e3b341&labelColor=0d1117&color=2a1f08)
-![Kali Linux](https://img.shields.io/badge/Kali_Linux-0d1117?style=flat-square&logo=kalilinux&logoColor=e3b341&labelColor=0d1117&color=2a1f08)
 
 **Frameworks & Platforms**
 
 ![MITRE ATT&CK](https://img.shields.io/badge/MITRE_ATT%26CK-0d1117?style=flat-square&logoColor=56d364&labelColor=0d1117&color=1f2d1f)
 ![Raspberry Pi](https://img.shields.io/badge/Raspberry_Pi-0d1117?style=flat-square&logo=raspberrypi&logoColor=56d364&labelColor=0d1117&color=1f2d1f)
+![Kali Linux](https://img.shields.io/badge/Kali_Linux-0d1117?style=flat-square&logo=kalilinux&logoColor=56d364&labelColor=0d1117&color=1f2d1f)
 ![Linux](https://img.shields.io/badge/Linux-0d1117?style=flat-square&logo=linux&logoColor=56d364&labelColor=0d1117&color=1f2d1f)
 ![Windows Server](https://img.shields.io/badge/Windows_Server-0d1117?style=flat-square&logo=windows&logoColor=56d364&labelColor=0d1117&color=1f2d1f)
-![Redis](https://img.shields.io/badge/Redis-0d1117?style=flat-square&logo=redis&logoColor=56d364&labelColor=0d1117&color=1f2d1f)
 
 **Languages & Query**
 
 ![Python](https://img.shields.io/badge/Python-0d1117?style=flat-square&logo=python&logoColor=bc8cff&labelColor=0d1117&color=1f1a2d)
 ![Bash](https://img.shields.io/badge/Bash-0d1117?style=flat-square&logo=gnubash&logoColor=bc8cff&labelColor=0d1117&color=1f1a2d)
-![C++](https://img.shields.io/badge/C++-0d1117?style=flat-square&logo=cplusplus&logoColor=bc8cff&labelColor=0d1117&color=1f1a2d)
 ![SPL](https://img.shields.io/badge/Splunk_SPL-0d1117?style=flat-square&logoColor=bc8cff&labelColor=0d1117&color=1f1a2d)
 ![KQL](https://img.shields.io/badge/KQL-0d1117?style=flat-square&logoColor=bc8cff&labelColor=0d1117&color=1f1a2d)
+![C++](https://img.shields.io/badge/C++-0d1117?style=flat-square&logo=cplusplus&logoColor=bc8cff&labelColor=0d1117&color=1f1a2d)
 ![Flutter](https://img.shields.io/badge/Flutter-0d1117?style=flat-square&logo=flutter&logoColor=bc8cff&labelColor=0d1117&color=1f1a2d)
 
 ---
 
 ## Activity
 
-> Stats update every 24 hours. Streak and languages update within 6 hours.
+> Stats update every 24 hours. Streak updates within 6 hours.
 
 <div align="center">
 
@@ -216,6 +280,9 @@ Flutter + Firebase + Node.js messaging app built security-first. AES-256 encrypt
 <img src="https://github-readme-streak-stats.herokuapp.com/?user=edwii-78&background=0d1117&ring=1f6feb&fire=f85149&currStreakLabel=e6edf3&sideLabels=8b949e&dates=6e7681&border=21262d&stroke=21262d&currStreakNum=e6edf3&sideNums=c9d1d9&border_radius=6&date_format=j%20M%5B%20Y%5D&card_width=760"/>
 
 </div>
+
+<br/>
+
 **SIEM Log Stream &nbsp;·&nbsp; Contribution Activity**
 
 > Each cell is a log event. The red scan line is the detection sweep — same way a SIEM scans incoming telemetry.
