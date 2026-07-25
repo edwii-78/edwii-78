@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """
-TryHackMe Stats Card — SOC Themed
-Update STATS dict manually when your profile changes.
+TryHackMe Stats Card — SOC Edition
+Edwin Dominic | edwii-78
+Update STATS when your profile changes. Run via GitHub Actions.
 """
 from datetime import datetime
 import os
 
-# ── UPDATE THESE WHEN YOUR STATS CHANGE ──────────────────────────────────────
+# ── UPDATE WHEN STATS CHANGE ──────────────────────────────────────────────────
 STATS = {
     "username":   "edwindominic7878",
     "rank":       "Seeker",
@@ -15,6 +16,7 @@ STATS = {
     "rooms":      16,
     "streak":     42,
     "badges":     3,
+    "paths":      2,
 }
 # ─────────────────────────────────────────────────────────────────────────────
 
@@ -29,175 +31,195 @@ RANK_COLOUR = {
     "god":          "#ffa657",
 }.get(STATS["rank"].lower(), "#a371f7")
 
-def make_svg():
-    s  = STATS
-    rc = RANK_COLOUR
-    W, H = 740, 230
-    now  = datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
+def make_svg() -> str:
+    s   = STATS
+    rc  = RANK_COLOUR
+    W   = 760
+    H   = 210
+    now = datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
 
-    # stat column x positions
-    C1, C2, C3 = 230, 420, 590
+    # Column x-positions for stat groups
+    C1, C2, C3, C4 = 220, 365, 510, 648
+
+    # Thin horizontal rule y
+    MID = 120
 
     return f"""<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="leftpanel" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%"   stop-color="{rc}" stop-opacity="0.13"/>
-      <stop offset="100%" stop-color="{rc}" stop-opacity="0.02"/>
+    <!-- Left panel ambient glow -->
+    <linearGradient id="lpanel" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="{rc}" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="{rc}" stop-opacity="0.00"/>
     </linearGradient>
+    <!-- Top accent bar -->
     <linearGradient id="topbar" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%"   stop-color="{rc}"     stop-opacity="0.9"/>
-      <stop offset="50%"  stop-color="#1f6feb"  stop-opacity="0.9"/>
-      <stop offset="100%" stop-color="{rc}"     stop-opacity="0.3"/>
+      <stop offset="0%"   stop-color="{rc}"    stop-opacity="0.0"/>
+      <stop offset="20%"  stop-color="{rc}"    stop-opacity="1.0"/>
+      <stop offset="65%"  stop-color="#1f6feb" stop-opacity="1.0"/>
+      <stop offset="100%" stop-color="#1f6feb" stop-opacity="0.0"/>
     </linearGradient>
+    <!-- Bottom pulse bar -->
     <linearGradient id="botbar" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%"   stop-color="{rc}"    stop-opacity="0"/>
-      <stop offset="40%"  stop-color="{rc}"    stop-opacity="0.5"/>
-      <stop offset="100%" stop-color="#1f6feb" stop-opacity="0"/>
+      <stop offset="0%"   stop-color="{rc}"    stop-opacity="0.0"/>
+      <stop offset="35%"  stop-color="{rc}"    stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#1f6feb" stop-opacity="0.0"/>
     </linearGradient>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="2" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
   </defs>
 
-  <!-- ── BASE ── -->
-  <rect width="{W}" height="{H}" rx="10" fill="#0d1117" stroke="#21262d" stroke-width="1"/>
+  <!-- Card base -->
+  <rect width="{W}" height="{H}" rx="8" fill="#0d1117" stroke="#21262d" stroke-width="0.5"/>
 
-  <!-- left panel tint -->
-  <rect x="0" y="0" width="205" height="{H}" rx="10" fill="url(#leftpanel)"/>
+  <!-- Left panel ambient tint -->
+  <rect x="0" y="0" width="200" height="{H}" rx="8" fill="url(#lpanel)"/>
 
-  <!-- top accent bar -->
-  <rect x="0" y="0" width="{W}" height="3" rx="1" fill="url(#topbar)"/>
+  <!-- Top accent line -->
+  <rect x="0" y="0" width="{W}" height="2" rx="1" fill="url(#topbar)"/>
 
-  <!-- left edge accent -->
-  <rect x="0" y="0" width="3" height="{H}" rx="1" fill="{rc}" opacity="0.7"/>
+  <!-- Left edge accent -->
+  <rect x="0" y="12" width="2" height="{H - 24}" rx="1" fill="{rc}" opacity="0.6"/>
 
-  <!-- ── LEFT PANEL ── -->
+  <!-- ── LEFT IDENTITY PANEL ─────────────────────────────────────────── -->
 
-  <!-- THM label -->
-  <text x="24" y="36"
+  <!-- Platform label -->
+  <text x="18" y="32"
     font-family="ui-monospace,'SF Mono',Consolas,monospace"
-    font-size="9" fill="{rc}" font-weight="700" letter-spacing="2.5"
-    opacity="0.85">TRYHACKME</text>
+    font-size="8" fill="{rc}" font-weight="700" letter-spacing="2"
+    opacity="0.7">TRYHACKME</text>
 
-  <!-- username -->
-  <text x="24" y="65"
+  <!-- Username -->
+  <text x="18" y="56"
     font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,sans-serif"
-    font-size="19" fill="#e6edf3" font-weight="600">{s["username"]}</text>
+    font-size="17" fill="#e6edf3" font-weight="600"
+    textLength="174" lengthAdjust="spacingAndGlyphs">{s["username"]}</text>
 
-  <!-- rank pill -->
-  <rect x="22" y="76" width="100" height="22" rx="11"
-    fill="{rc}" opacity="0.12" stroke="{rc}" stroke-width="0.8"/>
-  <text x="72" y="91"
+  <!-- Rank pill — no filter, solid colour only -->
+  <rect x="16" y="64" width="86" height="18" rx="9"
+    fill="{rc}" opacity="0.12" stroke="{rc}" stroke-width="0.6"/>
+  <text x="59" y="76"
     font-family="ui-monospace,'SF Mono',Consolas,monospace"
-    font-size="10" fill="{rc}" text-anchor="middle" font-weight="700"
-    filter="url(#glow)">{s["rank"].upper()}</text>
+    font-size="9" fill="{rc}" text-anchor="middle"
+    font-weight="700" letter-spacing="0.5">{s["rank"].upper()}</text>
 
-  <!-- separator -->
-  <line x1="24" y1="114" x2="182" y2="114" stroke="#21262d" stroke-width="1"/>
+  <!-- Thin rule -->
+  <line x1="16" y1="96" x2="188" y2="96" stroke="#21262d" stroke-width="0.5"/>
 
-  <!-- percentile big number -->
-  <text x="24" y="148"
+  <!-- Percentile — the standout number -->
+  <text x="16" y="126"
     font-family="ui-monospace,'SF Mono',Consolas,monospace"
-    font-size="28" fill="{rc}" font-weight="700"
-    filter="url(#glow)">{s["percentile"]}</text>
+    font-size="26" fill="{rc}" font-weight="700">{s["percentile"]}</text>
 
-  <text x="24" y="166"
-    font-family="-apple-system,BlinkMacSystemFont,sans-serif"
-    font-size="9" fill="#6e7681" letter-spacing="1.5">GLOBAL PERCENTILE</text>
+  <text x="16" y="142"
+    font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"
+    font-size="9" fill="#6e7681" letter-spacing="1.2">GLOBAL PERCENTILE</text>
 
-  <!-- ── VERTICAL DIVIDERS ── -->
-  <line x1="205" y1="16" x2="205" y2="{H-16}" stroke="#21262d" stroke-width="1"/>
-  <line x1="420" y1="16" x2="420" y2="{H-16}" stroke="#21262d" stroke-width="1"/>
-  <line x1="590" y1="16" x2="590" y2="{H-16}" stroke="#21262d" stroke-width="1"/>
+  <!-- ── VERTICAL DIVIDERS ──────────────────────────────────────────── -->
+  <line x1="200" y1="14" x2="200" y2="{H - 22}" stroke="#21262d" stroke-width="0.5"/>
+  <line x1="345" y1="14" x2="345" y2="{H - 22}" stroke="#21262d" stroke-width="0.5"/>
+  <line x1="490" y1="14" x2="490" y2="{H - 22}" stroke="#21262d" stroke-width="0.5"/>
+  <line x1="635" y1="14" x2="635" y2="{H - 22}" stroke="#21262d" stroke-width="0.5"/>
 
-  <!-- ── STAT: POINTS ── -->
-  <text x="{C1}" y="50"
-    font-family="ui-monospace,'SF Mono',Consolas,monospace"
-    font-size="9" fill="#6e7681" letter-spacing="1.5">POINTS</text>
-  <text x="{C1}" y="105"
-    font-family="ui-monospace,'SF Mono',Consolas,monospace"
-    font-size="46" fill="#e6edf3" font-weight="700">{s["points"]:,}</text>
-  <!-- small bar indicator -->
-  <rect x="{C1}" y="118" width="80" height="2" rx="1" fill="#21262d"/>
-  <rect x="{C1}" y="118" width="{min(80, int(s['points']/2))}" height="2" rx="1" fill="#e6edf3" opacity="0.4"/>
+  <!-- ── HORIZONTAL MID RULE (separates top/bottom stat rows) ──────── -->
+  <line x1="200" y1="{MID}" x2="{W - 4}" y2="{MID}" stroke="#21262d" stroke-width="0.5"/>
 
-  <!-- ── STAT: ROOMS ── -->
-  <text x="{C2}" y="50"
+  <!-- ── STAT: POINTS ──────────────────────────────────────────────── -->
+  <text x="{C1}" y="40"
     font-family="ui-monospace,'SF Mono',Consolas,monospace"
-    font-size="9" fill="#6e7681" letter-spacing="1.5">ROOMS COMPLETED</text>
-  <text x="{C2}" y="105"
+    font-size="8" fill="#6e7681" letter-spacing="1.5">POINTS</text>
+  <text x="{C1}" y="90"
     font-family="ui-monospace,'SF Mono',Consolas,monospace"
-    font-size="46" fill="#3fb950" font-weight="700">{s["rooms"]}</text>
-  <rect x="{C2}" y="118" width="80" height="2" rx="1" fill="#21262d"/>
-  <rect x="{C2}" y="118" width="{min(80, s['rooms']*6)}" height="2" rx="1" fill="#3fb950" opacity="0.5"/>
+    font-size="40" fill="#e6edf3" font-weight="700">{s["points"]:,}</text>
 
-  <!-- ── STAT: STREAK ── -->
-  <text x="{C3}" y="50"
+  <!-- ── STAT: ROOMS COMPLETED ─────────────────────────────────────── -->
+  <text x="{C2}" y="40"
     font-family="ui-monospace,'SF Mono',Consolas,monospace"
-    font-size="9" fill="#6e7681" letter-spacing="1.5">DAY STREAK</text>
-  <text x="{C3}" y="105"
+    font-size="8" fill="#6e7681" letter-spacing="1.5">ROOMS</text>
+  <text x="{C2}" y="90"
     font-family="ui-monospace,'SF Mono',Consolas,monospace"
-    font-size="46" fill="#d29922" font-weight="700">{s["streak"]}</text>
-  <rect x="{C3}" y="118" width="80" height="2" rx="1" fill="#21262d"/>
-  <rect x="{C3}" y="118" width="{min(80, s['streak']*3)}" height="2" rx="1" fill="#d29922" opacity="0.5"/>
+    font-size="40" fill="#3fb950" font-weight="700">{s["rooms"]}</text>
 
-  <!-- ── STAT: BADGES (bottom row) ── -->
-  <text x="{C1}" y="152"
+  <!-- ── STAT: DAY STREAK ──────────────────────────────────────────── -->
+  <text x="{C3}" y="40"
     font-family="ui-monospace,'SF Mono',Consolas,monospace"
-    font-size="9" fill="#6e7681" letter-spacing="1.5">BADGES EARNED</text>
-  <text x="{C1}" y="186"
+    font-size="8" fill="#6e7681" letter-spacing="1.5">DAY STREAK</text>
+  <text x="{C3}" y="90"
     font-family="ui-monospace,'SF Mono',Consolas,monospace"
-    font-size="36" fill="#bc8cff" font-weight="700">{s["badges"]}</text>
+    font-size="40" fill="#d29922" font-weight="700">{s["streak"]}</text>
 
-  <!-- paths completed label -->
-  <text x="{C2}" y="152"
+  <!-- ── STAT: BADGES ──────────────────────────────────────────────── -->
+  <text x="{C4}" y="40"
     font-family="ui-monospace,'SF Mono',Consolas,monospace"
-    font-size="9" fill="#6e7681" letter-spacing="1.5">ACTIVE PATHS</text>
-  <text x="{C2}" y="186"
+    font-size="8" fill="#6e7681" letter-spacing="1.5">BADGES</text>
+  <text x="{C4}" y="90"
     font-family="ui-monospace,'SF Mono',Consolas,monospace"
-    font-size="36" fill="#1f6feb" font-weight="700">2</text>
+    font-size="40" fill="#bc8cff" font-weight="700">{s["badges"]}</text>
 
-  <!-- account type -->
-  <text x="{C3}" y="152"
-    font-family="ui-monospace,'SF Mono',Consolas,monospace"
-    font-size="9" fill="#6e7681" letter-spacing="1.5">ACCOUNT TYPE</text>
-  <text x="{C3}" y="186"
-    font-family="ui-monospace,'SF Mono',Consolas,monospace"
-    font-size="18" fill="#8b949e" font-weight="600">FREE</text>
+  <!-- ── BOTTOM ROW — secondary stats ─────────────────────────────── -->
 
-  <!-- ── FOOTER ── -->
-  <rect x="0" y="{H-26}" width="{W}" height="1" fill="#21262d"/>
+  <!-- Completed label -->
+  <text x="{C2}" y="{MID + 20}"
+    font-family="ui-monospace,'SF Mono',Consolas,monospace"
+    font-size="8" fill="#6e7681" letter-spacing="1">COMPLETED</text>
+  <text x="{C2}" y="{MID + 42}"
+    font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"
+    font-size="12" fill="#8b949e">{s["rooms"]} rooms · {s["badges"]} badges</text>
 
-  <!-- blinking online dot -->
-  <circle cx="18" cy="{H-12}" r="4" fill="#3fb950">
-    <animate attributeName="opacity" values="1;0.15;1" dur="2.2s" repeatCount="indefinite"/>
+  <!-- Streak context -->
+  <text x="{C3}" y="{MID + 20}"
+    font-family="ui-monospace,'SF Mono',Consolas,monospace"
+    font-size="8" fill="#6e7681" letter-spacing="1">BEST STREAK</text>
+  <text x="{C3}" y="{MID + 42}"
+    font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"
+    font-size="12" fill="#8b949e">{s["streak"]} days active</text>
+
+  <!-- Paths -->
+  <text x="{C4}" y="{MID + 20}"
+    font-family="ui-monospace,'SF Mono',Consolas,monospace"
+    font-size="8" fill="#6e7681" letter-spacing="1">ACTIVE PATHS</text>
+  <text x="{C4}" y="{MID + 42}"
+    font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"
+    font-size="12" fill="#8b949e">SOC L1 · AI Security</text>
+
+  <!-- Left panel bottom — cert callout -->
+  <text x="16" y="{MID + 20}"
+    font-family="ui-monospace,'SF Mono',Consolas,monospace"
+    font-size="8" fill="#6e7681" letter-spacing="1">CLEARANCE</text>
+  <text x="16" y="{MID + 40}"
+    font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"
+    font-size="11" fill="{rc}">CEH v13 · CSCU</text>
+
+  <!-- ── FOOTER ─────────────────────────────────────────────────────── -->
+  <line x1="0" y1="{H - 22}" x2="{W}" y2="{H - 22}" stroke="#21262d" stroke-width="0.5"/>
+
+  <!-- Status dot -->
+  <circle cx="14" cy="{H - 11}" r="3.5" fill="#3fb950">
+    <animate attributeName="opacity" values="1;0.15;1" dur="2.4s" repeatCount="indefinite"/>
   </circle>
-  <text x="28" y="{H-8}"
+  <text x="23" y="{H - 7}"
     font-family="ui-monospace,'SF Mono',Consolas,monospace"
-    font-size="8" fill="#3fb950" letter-spacing="0.5">PROFILE ACTIVE</text>
+    font-size="8" fill="#3fb950" letter-spacing="0.5">ACTIVE</text>
 
-  <!-- THM link hint -->
-  <text x="190" y="{H-8}"
+  <!-- Profile URL -->
+  <text x="90" y="{H - 7}"
     font-family="ui-monospace,'SF Mono',Consolas,monospace"
     font-size="8" fill="#30363d">tryhackme.com/p/{s["username"]}</text>
 
-  <!-- timestamp right -->
-  <text x="{W-10}" y="{H-8}"
+  <!-- Timestamp -->
+  <text x="{W - 8}" y="{H - 7}"
     font-family="ui-monospace,'SF Mono',Consolas,monospace"
     font-size="8" fill="#30363d" text-anchor="end">Updated {now}</text>
 
-  <!-- bottom animated pulse -->
-  <rect x="0" y="{H-2}" width="{W}" height="2" rx="1" fill="url(#botbar)" opacity="0">
-    <animate attributeName="opacity" values="0;0.8;0" dur="3.5s" repeatCount="indefinite"/>
+  <!-- Bottom animated pulse -->
+  <rect x="0" y="{H - 2}" width="{W}" height="2" rx="1" fill="url(#botbar)" opacity="0">
+    <animate attributeName="opacity" values="0;0.7;0" dur="3.5s" repeatCount="indefinite"/>
   </rect>
 </svg>"""
 
+
 if __name__ == "__main__":
-    svg = make_svg()
+    svg  = make_svg()
     os.makedirs("assets", exist_ok=True)
     path = "assets/thm-stats.svg"
     with open(path, "w") as f:
         f.write(svg)
     print(f"Written {path}  ({len(svg):,} bytes)")
-    print(f"Stats used: {STATS}")
+    print(f"Stats: {STATS}")
