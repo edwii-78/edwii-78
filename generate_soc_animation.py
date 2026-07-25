@@ -1,141 +1,193 @@
 #!/usr/bin/env python3
 """
 SOC Log Stream Animation Generator
-Reads Edwin's GitHub contribution data (via API) and produces an animated SVG
-that looks like a SIEM log feed streaming across the contribution grid.
-Each contribution cell = a log event. Animated sweep = threat scan.
+Edwin Dominic | edwii-78
+Reads contribution data via GitHub GraphQL API.
+Each cell = a log event. Red scan line = SIEM detection sweep.
 """
 
-import json, os, sys, math, random
-from datetime import datetime, timedelta
+import json
+import os
+import sys
+import urllib.request
+import urllib.error
+from datetime import datetime
 
-def fetch_contributions(username, token):
-    """Fetch 52 weeks of contribution data from GitHub GraphQL API."""
-    import urllib.request
-    query = """{ user(login: "%s") { contributionsCollection { contributionCalendar { weeks { contributionDays { contributionCount weekday date } } } } } }""" % username
+
+# ── CONFIG ────────────────────────────────────────────────────────────────────
+USERNAME = os.environ.get("GITHUB_USERNAME", "edwii-78")
+TOKEN    = os.environ.get("GITHUB_TOKEN", "")
+
+PALETTE_DARK = {
+    "bg":       "#0d1117",
+    "empty":    "#161b22",
+    "levels":   ["#161b22", "#0d2137", "#0d3a6e", "#1158c7", "#1f6feb"],
+    "scan":     "#f85149",
+    "label":    "#8b949e",
+    "caption":  "#6e7681",
+    "border":   "#21262d",
+}
+
+PALETTE_LIGHT = {
+    "bg":       "#ffffff",
+    "empty":    "#ebedf0",
+    "levels":   ["#ebedf0", "#9fc5f8", "#4a90d9", "#1f6feb", "#0d47a1"],
+    "scan":     "#cf222e",
+    "label":    "#57606a",
+    "caption":  "#6e7681",
+    "border":   "#d0d7de",
+}
+
+# Grid geometry
+CELL = 11
+GAP  = 3
+STEP = CELL + GAP
+LEFT = 32      # left margin for day labels
+TOP  = 28      # top margin for month labels
+# ─────────────────────────────────────────────────────────────────────────────
+
+
+def fetch_contributions(username: str, token: str) -> list:
+    query = (
+        '{ user(login: "%s") { contributionsCollection {'
+        ' contributionCalendar { weeks { contributionDays {'
+        ' contributionCount weekday date } } } } } }' % username
+    )
     payload = json.dumps({"query": query}).encode()
     req = urllib.request.Request(
         "https://api.github.com/graphql",
         data=payload,
-        headers={"Authorization": f"bearer {token}", "Content-Type": "application/json"}
+        headers={
+            "Authorization": f"bearer {token}",
+            "Content-Type": "application/json",
+        },
     )
     with urllib.request.urlopen(req, timeout=15) as r:
         data = json.loads(r.read())
-    weeks = data["data"]["user"]["contributionsCollection"]["contributionCalendar"]["weeks"]
-    return weeks
+    return (
+        data["data"]["user"]
+            ["contributionsCollection"]
+            ["contributionCalendar"]
+            ["weeks"]
+    )
 
-def count_to_level(c):
-    if c == 0: return 0
-    if c <= 2: return 1
-    if c <= 5: return 2
-    if c <= 9: return 3
+
+def count_to_level(c: int) -> int:
+    if c == 0:  return 0
+    if c <= 2:  return 1
+    if c <= 5:  return 2
+    if c <= 9:  return 3
     return 4
 
-def generate_svg(weeks, output_path, dark=True):
-    # Colour scheme: dark bg, blue log cells, red animated scanner
-    bg        = "#0d1117" if dark else "#ffffff"
-    cell_0    = "#161b22" if dark else "#ebedf0"
-    cell_cols = ["#161b22", "#0d2137", "#0d3a6e", "#1158c7", "#1f6feb"] if dark else \
-                ["#ebedf0", "#9fc5f8", "#4a90d9", "#1f6feb", "#0d47a1"]
-    scan_col  = "#f85149"
-    text_col  = "#6e7681" if dark else "#57606a"
-    label_col = "#8b949e" if dark else "#57606a"
 
-    CELL = 11   # cell size
-    GAP  = 3    # gap
-    STEP = CELL + GAP
-    LEFT = 38   # left margin for day labels
-    TOP  = 32   # top margin for month labels
-
-    cols = len(weeks)
-    rows = 7
-    W = LEFT + cols * STEP + 20
-    H = TOP  + rows * STEP + 40
-
-    # Build cell data
-    cells = []
-    for wi, week in enumerate(weeks):
-        for day in week["contributionDays"]:
-            wd = day["weekday"]
-            lv = count_to_level(day["contributionCount"])
-            x  = LEFT + wi * STEP
-            y  = TOP  + wd * STEP
-            cells.append((x, y, lv, wi, day["contributionCount"]))
-
-    # Month labels
-    month_labels = []
-    seen_months = set()
+def month_labels(weeks: list) -> list:
+    """Return (x, label) pairs — deduplicated by (month, year) so
+    Jan 2025 and Jan 2026 both appear correctly."""
+    seen   = set()
+    labels = []
     for wi, week in enumerate(weeks):
         for day in week["contributionDays"]:
             try:
                 dt = datetime.strptime(day["date"], "%Y-%m-%d")
-                m  = dt.strftime("%b")
-                if m not in seen_months and dt.day <= 7:
-                    seen_months.add(m)
-                    month_labels.append((LEFT + wi * STEP, TOP - 6, m))
-            except:
-                pass
+            except ValueError:
+                continue
+            key = (dt.year, dt.month)
+            if key not in seen and dt.day <= 7:
+                seen.add(key)
+                x = LEFT + wi * STEP
+                labels.append((x, dt.strftime("%b")))
+    return labels
 
-    # Day labels
-    day_labels = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
 
-    # SVG start
+def generate_svg(weeks: list, dark: bool = True) -> str:
+    p    = PALETTE_DARK if dark else PALETTE_LIGHT
+    cols = len(weeks)
+    W    = LEFT + cols * STEP + 16
+    H    = TOP  + 7 * STEP + 32
+
+    x_start = LEFT - 1
+    x_end   = LEFT + cols * STEP + 2
+
     lines = [
-        f'<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg">',
-        f'  <rect width="{W}" height="{H}" fill="{bg}"/>',
+        f'<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}"'
+        f' xmlns="http://www.w3.org/2000/svg">',
+        f'  <rect width="{W}" height="{H}" fill="{p["bg"]}"/>',
     ]
 
-    # Month labels
-    for (lx, ly, lm) in month_labels:
-        lines.append(f'  <text x="{lx}" y="{ly}" font-family="ui-monospace,monospace" font-size="9" fill="{label_col}">{lm}</text>')
+    # ── Month labels ──────────────────────────────────────────────────────────
+    for (mx, mlabel) in month_labels(weeks):
+        lines.append(
+            f'  <text x="{mx}" y="{TOP - 6}"'
+            f' font-family="ui-monospace,\'SF Mono\',Consolas,monospace"'
+            f' font-size="9" fill="{p["label"]}">{mlabel}</text>'
+        )
 
-    # Day labels (Mon / Wed / Fri only)
-    for di, dl in enumerate(day_labels):
+    # ── Day labels (Mon / Wed / Fri) ──────────────────────────────────────────
+    for di, dl in enumerate(["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]):
         if di in (1, 3, 5):
             ly = TOP + di * STEP + CELL - 1
-            lines.append(f'  <text x="{LEFT-4}" y="{ly}" font-family="ui-monospace,monospace" font-size="9" fill="{label_col}" text-anchor="end">{dl}</text>')
+            lines.append(
+                f'  <text x="{LEFT - 5}" y="{ly}"'
+                f' font-family="ui-monospace,\'SF Mono\',Consolas,monospace"'
+                f' font-size="9" fill="{p["label"]}" text-anchor="end">{dl}</text>'
+            )
 
-    # Contribution cells
-    for (cx, cy, lv, wi, count) in cells:
-        colour = cell_cols[lv]
-        lines.append(f'  <rect x="{cx}" y="{cy}" width="{CELL}" height="{CELL}" rx="2" fill="{colour}"/>')
+    # ── Contribution cells ────────────────────────────────────────────────────
+    for week in weeks:
+        for day in week["contributionDays"]:
+            lv  = count_to_level(day["contributionCount"])
+            col = p["levels"][lv]
+            wd  = day["weekday"]
+            # calc week index from first week
+            wi  = weeks.index(week)
+            cx  = LEFT + wi * STEP
+            cy  = TOP  + wd * STEP
+            lines.append(
+                f'  <rect x="{cx}" y="{cy}" width="{CELL}" height="{CELL}"'
+                f' rx="2" fill="{col}"/>'
+            )
 
-    # Animated scanner — vertical line sweeping left→right
-    scan_dur  = "3.5s"
-    x_start   = LEFT - 2
-    x_end     = LEFT + cols * STEP + 4
-    scan_x    = LEFT
+    # ── Scan line — single 1px element, no glow rect ─────────────────────────
+    scan_y  = TOP - 3
+    scan_h  = 7 * STEP + 6
+    scan_dur = "3.5s"
 
-    lines.append(f'  <!-- SOC Scan sweep -->')
-    # Glow rect wide
-    lines.append(f'  <rect x="{scan_x}" y="{TOP-4}" width="3" height="{rows*STEP+8}" rx="1" fill="{scan_col}" opacity="0.18">')
-    lines.append(f'    <animate attributeName="x" from="{x_start}" to="{x_end}" dur="{scan_dur}" repeatCount="indefinite"/>')
-    lines.append(f'    <animate attributeName="opacity" values="0;0.18;0.18;0" keyTimes="0;0.02;0.98;1" dur="{scan_dur}" repeatCount="indefinite"/>')
-    lines.append(f'  </rect>')
-    # Thin bright line
-    lines.append(f'  <rect x="{scan_x}" y="{TOP-4}" width="1" height="{rows*STEP+8}" fill="{scan_col}" opacity="0.9">')
-    lines.append(f'    <animate attributeName="x" from="{x_start}" to="{x_end}" dur="{scan_dur}" repeatCount="indefinite"/>')
-    lines.append(f'    <animate attributeName="opacity" values="0;0.9;0.9;0" keyTimes="0;0.02;0.98;1" dur="{scan_dur}" repeatCount="indefinite"/>')
-    lines.append(f'  </rect>')
+    lines.append("  <!-- SOC SIEM detection sweep -->")
+    lines.append(
+        f'  <rect x="{x_start}" y="{scan_y}" width="1" height="{scan_h}"'
+        f' fill="{p["scan"]}" opacity="0">'
+    )
+    lines.append(
+        f'    <animate attributeName="x"'
+        f' from="{x_start}" to="{x_end}" dur="{scan_dur}" repeatCount="indefinite"/>'
+    )
+    lines.append(
+        f'    <animate attributeName="opacity"'
+        f' values="0;0.9;0.9;0" keyTimes="0;0.02;0.98;1"'
+        f' dur="{scan_dur}" repeatCount="indefinite"/>'
+    )
+    lines.append("  </rect>")
 
-    # Bottom label
-    lines.append(f'  <text x="{LEFT}" y="{H-6}" font-family="ui-monospace,monospace" font-size="8" fill="{text_col}">SIEM LOG EVENTS · CONTRIBUTION ACTIVITY</text>')
+    lines.append("</svg>")
+    return "\n".join(lines)
 
-    lines.append('</svg>')
-    svg = "\n".join(lines)
-    os.makedirs(os.path.dirname(output_path) or ".", exist_ok=True)
-    with open(output_path, "w") as f:
-        f.write(svg)
-    print(f"Written: {output_path} ({len(svg)} bytes, {len(cells)} cells)")
+
+def write(path: str, content: str) -> None:
+    os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
+    with open(path, "w") as f:
+        f.write(content)
+    print(f"Written: {path}  ({len(content):,} bytes)")
+
 
 if __name__ == "__main__":
-    token    = os.environ.get("GITHUB_TOKEN", "")
-    username = os.environ.get("GITHUB_USERNAME", "edwii-78")
-    if not token:
+    if not TOKEN:
         print("ERROR: GITHUB_TOKEN not set", file=sys.stderr)
         sys.exit(1)
-    print(f"Fetching contributions for {username}...")
-    weeks = fetch_contributions(username, token)
-    generate_svg(weeks, "dist/soc-log-stream-dark.svg", dark=True)
-    generate_svg(weeks, "dist/soc-log-stream.svg",      dark=False)
+
+    print(f"Fetching contributions for {USERNAME}...")
+    weeks = fetch_contributions(USERNAME, TOKEN)
+    print(f"  {len(weeks)} weeks fetched")
+
+    write("dist/soc-log-stream-dark.svg",  generate_svg(weeks, dark=True))
+    write("dist/soc-log-stream.svg",       generate_svg(weeks, dark=False))
     print("Done.")
