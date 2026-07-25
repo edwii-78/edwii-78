@@ -160,7 +160,7 @@
   <!-- Timestamp -->
   <text x="752" y="203"
     font-family="ui-monospace,'SF Mono',Consolas,monospace"
-    font-size="8" fill="#30363d" text-anchor="end">Updated 2026-07-25 19:01 UTC</text>
+    font-size="8" fill="#30363d" text-anchor="end">Updated 2026-07-25 19:04 UTC</text>
 
   <!-- Bottom animated pulse -->
   <rect x="0" y="208" width="760" height="2" rx="1" fill="url(#botbar)" opacity="0">
