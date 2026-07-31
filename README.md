@@ -185,8 +185,8 @@ A structured, 13-investigation roadmap covering the full attack lifecycle — au
 | Status | Investigation | MITRE |
 |:---|:---|:---|
 | ✅ Completed | Attempted LSASS Credential Dumping | T1003.001 · T1218.011 |
-| 🔄 In progress | WMI Remote Execution Investigation | T1047 |
-| ⬜ Planned | BITSAdmin Abuse | T1197 |
+| 🔄 In progress  | BITSAdmin Abuse | T1197 |
+| ⬜ Planned | WMI Remote Execution Investigation | T1047 |
 | ⬜ Planned | Command & Control Beacon Detection | T1071 |
 
 **Phase 4 — Impact & Defense Evasion**
@@ -214,7 +214,7 @@ A 6-project series focused on enterprise endpoint investigation and response —
 
 | Status | Project |
 |:---|:---|
-| ⬜ Planned | Endpoint Incident Investigation & Response |
+| ✅ Completed | Endpoint Incident Investigation & Response |
 | ⬜ Planned | Automated Investigation & Attack Disruption |
 | ⬜ Planned | Threat Intelligence & IOC Management |
 | ⬜ Planned | Advanced Hunting & Proactive Threat Hunting (KQL) |
