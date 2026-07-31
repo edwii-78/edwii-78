@@ -24,7 +24,7 @@
 
 Produced professional-grade SOC investigation reports — a full behavioral malware analysis of AsyncRAT v0.5.8 and a credential phishing IR documenting authenticated Microsoft 365 tenant abuse to bypass SPF/DKIM. Both include MITRE ATT&CK mappings, IOC tables, containment plans, and Splunk SPL hunting queries.
 
-Detection engineering labs built on Wazuh and Splunk, with Sysmon telemetry, Suricata inline IDS, and eight MITRE ATT&CK techniques detected end-to-end in a live Windows 11 lab. A Raspberry Pi 4 runs as an inline IPS with ML anomaly detection on a production network.
+Building a full detection engineering progression across **Wazuh → Splunk → Microsoft Defender XDR → Microsoft Sentinel** — each platform demonstrating a distinct SOC capability: endpoint telemetry and detection engineering, SIEM investigation and threat hunting, enterprise endpoint response, and cross-domain SIEM/SOAR correlation. Eight MITRE ATT&CK techniques detected end-to-end on Wazuh. A Raspberry Pi 4 runs as an inline IPS with ML anomaly detection on a production network.
 
 Independent vulnerability research — 15+ disclosures to Indian government portals and institutions. IIT Madras acknowledged. CERT-In Hall of Fame nominated twice. Open to SOC analyst, detection engineer, and threat hunting roles — available to relocate anywhere.
 
@@ -161,28 +161,41 @@ Windows 11 lab with Sysmon telemetry feeding Wazuh. Eight MITRE ATT&CK technique
 
 <table><tr><td>
 
-**`OP-005`** &nbsp; ![](https://img.shields.io/badge/BUILDING-6e7681?style=flat-square&labelColor=0d1117)
+**`OP-005`** &nbsp; ![](https://img.shields.io/badge/IN_PROGRESS-d29922?style=flat-square&labelColor=0d1117)
 
-### Splunk Detection Engineering Lab — Full Kill Chain Simulation
-`Splunk Enterprise` &nbsp;·&nbsp; `SPL` &nbsp;·&nbsp; `MITRE ATT&CK` &nbsp;·&nbsp; `LOLBins`
+### Splunk Threat Hunting & Detection Engineering — 13-Project Roadmap
+`Splunk Enterprise` &nbsp;·&nbsp; `SPL` &nbsp;·&nbsp; `Sysmon` &nbsp;·&nbsp; `MITRE ATT&CK` &nbsp;·&nbsp; `Timeline Reconstruction`
 
-Splunk Enterprise environment. SPL-based detection across a complete attack chain — each phase has a detection built and validated before moving to the next. Capstone: full multi-stage simulation producing an executive-ready IR report.
+A structured, 13-investigation roadmap covering the full attack lifecycle — authentication, initial access, LOLBins, credential access, lateral movement, C2, and impact — each producing a standalone SOC investigation report with SPL detection logic, IOC extraction, and MITRE mapping. **6 of 13 completed.**
 
-| Phase | Attack | Detection |
-|:------|:-------|:----------|
-| 1 | Phishing — initial access | Attachment heuristics · email header analysis |
-| 2 | WinRM lateral movement | Event ID 4624 type-3 · WinRM service abuse |
-| 3 | LSASS credential dump | Process access events · LSASS memory reads |
-| 4 | C2 beacon establishment | Beaconing interval regularity · JA3 |
-| 5 | Staged data exfiltration | Large outbound transfers · Certutil abuse |
-| 6 | Ransomware detonation | Mass file rename · shadow copy deletion |
+**Phase 1 — Authentication Monitoring**
+| Status | Investigation | MITRE |
+|:---|:---|:---|
+| ✅ Completed | Account Lockout Investigation | T1110 |
+| ✅ Completed | Unauthorized Local Administrator Creation | T1136 |
 
-![](https://img.shields.io/badge/T1566-f85149?style=flat-square&labelColor=2d1f1f)
-![](https://img.shields.io/badge/T1021-f85149?style=flat-square&labelColor=2d1f1f)
-![](https://img.shields.io/badge/T1003-f85149?style=flat-square&labelColor=2d1f1f)
-![](https://img.shields.io/badge/T1071-f85149?style=flat-square&labelColor=2d1f1f)
-![](https://img.shields.io/badge/T1560-f85149?style=flat-square&labelColor=2d1f1f)
-![](https://img.shields.io/badge/T1486-f85149?style=flat-square&labelColor=2d1f1f)
+**Phase 2 — Initial Access & Execution (LOLBins)**
+| Status | Investigation | MITRE |
+|:---|:---|:---|
+| ✅ Completed | Certutil Download Activity | T1105 |
+| ✅ Completed | MSHTA Remote Script Execution | T1218.005 |
+| ✅ Completed | Office → PowerShell Execution Chain | T1204 · T1059.001 |
+
+**Phase 3 — Credential Access & Lateral Movement**
+| Status | Investigation | MITRE |
+|:---|:---|:---|
+| ✅ Completed | Attempted LSASS Credential Dumping | T1003.001 · T1218.011 |
+| 🔄 In progress | WMI Remote Execution Investigation | T1047 |
+| ⬜ Planned | BITSAdmin Abuse | T1197 |
+| ⬜ Planned | Command & Control Beacon Detection | T1071 |
+
+**Phase 4 — Impact & Defense Evasion**
+| Status | Investigation | MITRE |
+|:---|:---|:---|
+| ⬜ Planned | Data Exfiltration Detection | T1041 |
+| ⬜ Planned | Shadow Copy Deletion | T1490 |
+| ⬜ Planned | Ransomware Behavioral Detection | T1486 · T1490 |
+| ⬜ Planned | File Encryption Burst Detection | T1486 |
 
 [![View repository](https://img.shields.io/badge/View_repository-Splunk_Lab-1f6feb?style=flat-square&logo=github&logoColor=white)](https://github.com/edwii-78/Splunk-SOC-Detection-Engineering-Lab)
 
@@ -192,7 +205,61 @@ Splunk Enterprise environment. SPL-based detection across a complete attack chai
 
 <table><tr><td>
 
-**`OP-006`** &nbsp; ![](https://img.shields.io/badge/COMPLETED-238636?style=flat-square&labelColor=0d1117)
+**`OP-006`** &nbsp; ![](https://img.shields.io/badge/IN_PROGRESS-d29922?style=flat-square&labelColor=0d1117)
+
+### Microsoft Defender XDR — Enterprise Endpoint Investigation Series
+`Defender for Endpoint` &nbsp;·&nbsp; `Entra ID` &nbsp;·&nbsp; `KQL` &nbsp;·&nbsp; `MITRE ATT&CK`
+
+A 6-project series focused on enterprise endpoint investigation and response — distinct from the Wazuh/Splunk work by covering Microsoft's automated investigation, threat intelligence operationalization, advanced hunting with KQL, cross-domain XDR correlation, and live response forensics.
+
+| Status | Project |
+|:---|:---|
+| ⬜ Planned | Endpoint Incident Investigation & Response |
+| ⬜ Planned | Automated Investigation & Attack Disruption |
+| ⬜ Planned | Threat Intelligence & IOC Management |
+| ⬜ Planned | Advanced Hunting & Proactive Threat Hunting (KQL) |
+| ⬜ Planned | Enterprise XDR Incident Correlation |
+| ⬜ Planned | Live Response & Enterprise Forensics |
+
+![](https://img.shields.io/badge/KQL-1f6feb?style=flat-square&labelColor=0d1520)
+![](https://img.shields.io/badge/Advanced_Hunting-1f6feb?style=flat-square&labelColor=0d1520)
+![](https://img.shields.io/badge/Live_Response-1f6feb?style=flat-square&labelColor=0d1520)
+![](https://img.shields.io/badge/XDR_Correlation-1f6feb?style=flat-square&labelColor=0d1520)
+
+</td></tr></table>
+
+<br/>
+
+<table><tr><td>
+
+**`OP-007`** &nbsp; ![](https://img.shields.io/badge/IN_PROGRESS-d29922?style=flat-square&labelColor=0d1117)
+
+### Microsoft Sentinel — Enterprise SIEM & SOAR Series
+`Microsoft Sentinel` &nbsp;·&nbsp; `KQL` &nbsp;·&nbsp; `Logic Apps` &nbsp;·&nbsp; `Automation Rules` &nbsp;·&nbsp; `ServiceNow SIR`
+
+A 6-project series demonstrating enterprise SIEM operations — correlating telemetry from Defender XDR, Entra ID, and Microsoft 365 into unified incidents, building KQL analytics rules and watchlists, and automating response with Logic Apps and ServiceNow integration.
+
+| Status | Project |
+|:---|:---|
+| ⬜ Planned | Phishing Email → Defender XDR → Sentinel Investigation |
+| ⬜ Planned | Cloud Identity Attack Investigation (Entra ID) |
+| ⬜ Planned | Business Email Compromise (BEC) Investigation |
+| ⬜ Planned | Cloud Account Takeover & OAuth Persistence |
+| ⬜ Planned | Defender XDR → Sentinel Incident Correlation |
+| ⬜ Planned | Sentinel Detection Engineering & SOAR |
+
+![](https://img.shields.io/badge/SIEM-1f6feb?style=flat-square&labelColor=0d1520)
+![](https://img.shields.io/badge/SOAR-1f6feb?style=flat-square&labelColor=0d1520)
+![](https://img.shields.io/badge/Cross_Domain_Correlation-1f6feb?style=flat-square&labelColor=0d1520)
+![](https://img.shields.io/badge/Automation-1f6feb?style=flat-square&labelColor=0d1520)
+
+</td></tr></table>
+
+<br/>
+
+<table><tr><td>
+
+**`OP-008`** &nbsp; ![](https://img.shields.io/badge/COMPLETED-238636?style=flat-square&labelColor=0d1117)
 
 ### ZeroTrace — AES-256 Encrypted Messenger
 `Flutter` &nbsp;·&nbsp; `Firebase` &nbsp;·&nbsp; `Node.js` &nbsp;·&nbsp; `AES-256 E2E`
@@ -219,15 +286,35 @@ Flutter + Firebase + Node.js messaging app built security-first. AES-256 encrypt
 
 <br/>
 
+## Detection Engineering Progression
+
+```text
+Wazuh                    Splunk                    Defender XDR              Sentinel
+────────                  ────────                   ──────────────            ──────────
+Endpoint telemetry    →   SIEM + SPL threat      →   Enterprise endpoint   →   SIEM/SOAR,
+Detection rules            hunting, timeline           investigation,            cross-domain
+8 TTPs — completed         reconstruction               live response,           correlation,
+                            6 / 13 — in progress         KQL hunting               automation
+                                                          — planned                 — planned
+```
+
+<br/>
+
+---
+
+<br/>
+
 ## Stack
 
 <br/>
 
-**Detection & SIEM** &nbsp; — &nbsp; ![Wazuh](https://img.shields.io/badge/Wazuh-0d2137?style=flat-square&logo=wazuh&logoColor=79c0ff) ![Splunk](https://img.shields.io/badge/Splunk-0d2137?style=flat-square&logo=splunk&logoColor=79c0ff) ![Microsoft Sentinel](https://img.shields.io/badge/Microsoft_Sentinel-0d2137?style=flat-square&logo=microsoftazure&logoColor=79c0ff) ![Grafana](https://img.shields.io/badge/Grafana-0d2137?style=flat-square&logo=grafana&logoColor=79c0ff)
+**Detection & SIEM** &nbsp; — &nbsp; ![Wazuh](https://img.shields.io/badge/Wazuh-0d2137?style=flat-square&logo=wazuh&logoColor=79c0ff) ![Splunk](https://img.shields.io/badge/Splunk-0d2137?style=flat-square&logo=splunk&logoColor=79c0ff) ![Microsoft Sentinel](https://img.shields.io/badge/Microsoft_Sentinel-0d2137?style=flat-square&logo=microsoftazure&logoColor=79c0ff) ![Defender XDR](https://img.shields.io/badge/Defender_XDR-0d2137?style=flat-square&logo=microsoftdefender&logoColor=79c0ff) ![Grafana](https://img.shields.io/badge/Grafana-0d2137?style=flat-square&logo=grafana&logoColor=79c0ff)
 
 **Network & IDS/IPS** &nbsp; — &nbsp; ![Suricata](https://img.shields.io/badge/Suricata-3d1f1f?style=flat-square&logoColor=ff7b72) ![Wireshark](https://img.shields.io/badge/Wireshark-3d1f1f?style=flat-square&logo=wireshark&logoColor=ff7b72) ![Nmap](https://img.shields.io/badge/Nmap-3d1f1f?style=flat-square&logoColor=ff7b72) ![Pi-hole](https://img.shields.io/badge/Pi--hole-3d1f1f?style=flat-square&logo=pi-hole&logoColor=ff7b72) ![iptables](https://img.shields.io/badge/iptables-3d1f1f?style=flat-square&logo=linux&logoColor=ff7b72)
 
 **Endpoint & Forensics** &nbsp; — &nbsp; ![Sysmon](https://img.shields.io/badge/Sysmon-2a1f08?style=flat-square&logo=windows&logoColor=e3b341) ![Autopsy](https://img.shields.io/badge/Autopsy-2a1f08?style=flat-square&logoColor=e3b341) ![Triage Sandbox](https://img.shields.io/badge/Triage_Sandbox-2a1f08?style=flat-square&logoColor=e3b341) ![Burp Suite](https://img.shields.io/badge/Burp_Suite-2a1f08?style=flat-square&logoColor=e3b341)
+
+**Identity & Cloud** &nbsp; — &nbsp; ![Entra ID](https://img.shields.io/badge/Entra_ID-160f2d?style=flat-square&logo=microsoftazure&logoColor=d2a8ff) ![Active Directory](https://img.shields.io/badge/Active_Directory-160f2d?style=flat-square&logo=windows&logoColor=d2a8ff) ![Logic Apps](https://img.shields.io/badge/Azure_Logic_Apps-160f2d?style=flat-square&logo=microsoftazure&logoColor=d2a8ff)
 
 **Frameworks** &nbsp; — &nbsp; ![MITRE ATT&CK](https://img.shields.io/badge/MITRE_ATT%26CK-1f2d1f?style=flat-square&logoColor=56d364) ![Linux](https://img.shields.io/badge/Linux-1f2d1f?style=flat-square&logo=linux&logoColor=56d364) ![Kali](https://img.shields.io/badge/Kali_Linux-1f2d1f?style=flat-square&logo=kalilinux&logoColor=56d364) ![Windows Server](https://img.shields.io/badge/Windows_Server-1f2d1f?style=flat-square&logo=windows&logoColor=56d364)
 
@@ -241,7 +328,7 @@ Flutter + Firebase + Node.js messaging app built security-first. AES-256 encrypt
 
 ## Activity
 
-> Stats update every 24 hours. Commit regularly — each detection rule, lab update, or SPL query counts.
+> Stats update every 24 hours. Commit regularly — each detection rule, lab update, or SPL/KQL query counts.
 
 <div align="center">
 
