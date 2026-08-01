@@ -24,7 +24,7 @@
 
 Produced professional-grade SOC investigation reports — a full behavioral malware analysis of AsyncRAT v0.5.8 and a credential phishing IR documenting authenticated Microsoft 365 tenant abuse to bypass SPF/DKIM. Both include MITRE ATT&CK mappings, IOC tables, containment plans, and Splunk SPL hunting queries.
 
-Building a detection engineering progression across **Wazuh → Splunk → Microsoft Defender XDR → Microsoft Sentinel**, each platform demonstrating a distinct SOC capability. Eight MITRE ATT&CK techniques detected end-to-end on Wazuh. A Raspberry Pi 4 runs as an inline IPS with ML anomaly detection on a production network.
+Building a detection engineering progression across Wazuh, Splunk, Microsoft Defender XDR, and Microsoft Sentinel — each platform demonstrating a distinct SOC capability. Eight MITRE ATT&CK techniques detected end-to-end on Wazuh. A Raspberry Pi 4 runs as an inline IPS with ML anomaly detection on a production network.
 
 Independent vulnerability research — 15+ disclosures to Indian government portals and institutions. IIT Madras acknowledged. CERT-In Hall of Fame nominated twice. Open to SOC analyst, detection engineer, and threat hunting roles — available to relocate anywhere.
 
@@ -34,29 +34,27 @@ Independent vulnerability research — 15+ disclosures to Indian government port
 
 <br/>
 
-## Proven Investigations
-
-<sub>Complete, published SOC-grade case files — full methodology, evidence, and findings.</sub>
+## Featured investigations
 
 <br/>
 
-<table><tr><td width="100%">
+<table><tr><td>
 
-<img align="right" src="https://img.shields.io/badge/MALWARE_ANALYSIS-f85149?style=flat-square&labelColor=2d1010" alt=""/>
+<img align="right" width="4" height="1" src="https://img.shields.io/badge/-f85149?style=flat-square" alt=""/>
 
-**`OP-001`** &nbsp;·&nbsp; ![](https://img.shields.io/badge/COMPLETED-238636?style=flat-square&labelColor=0d1117)
+**`INVESTIGATION`** &nbsp;·&nbsp; ![](https://img.shields.io/badge/COMPLETED-238636?style=flat-square&labelColor=0d1117)
 
 ### AsyncRAT v0.5.8 — Behavioral Malware Analysis
 `Triage Sandbox` &nbsp;·&nbsp; `Static Config Extraction` &nbsp;·&nbsp; `Dynamic Analysis` &nbsp;·&nbsp; `Splunk SPL`
 
-Score **10 / 10**. Static extraction recovered AES key, mutex, 6 C2 hosts, install path — without execution. Dynamic detonation confirmed roaming-profile install, `OnLogon` scheduled task at highest privilege, `SeDebugPrivilege` acquisition, and 25 C2 connections. Persistence validated by the payload relaunching as an unparented process.
+Sample `95dedfab...fd2b76a2` — malicious score **10/10**. Static configuration extraction recovered live C2 infrastructure, AES key, mutex `LtyEIcOsTiXq`, install path, and persistence filename without executing the sample. Dynamic detonation confirmed installation to roaming profile, `OnLogon` scheduled task at highest run level, `SeDebugPrivilege` acquisition, and 25 outbound C2 connections across four ports. Persistence validated: payload relaunched as an unparented top-level process, confirming the scheduled task fired.
 
 | Field | Detail |
 |:---|:---|
-| Static recovery | AES key · mutex `LtyEIcOsTiXq` · 6 C2 hosts · install path |
+| Static extraction | AES key · mutex `LtyEIcOsTiXq` · 6 C2 hosts · install path |
 | Persistence | `schtasks /sc onlogon /rl highest` → `%AppData%\windown10.exe` |
 | C2 observed | `34.76.205.124` — ports 80, 443, 4444, 5555 of 6 configured |
-| Output | Full IR · IOC table · 3 Splunk SPL hunting queries |
+| Output | Full IR report · IOC table · 3 Splunk SPL hunting queries |
 
 ![](https://img.shields.io/badge/T1059.003-f85149?style=flat-square&labelColor=2d1010)
 ![](https://img.shields.io/badge/T1053.005-f85149?style=flat-square&labelColor=2d1010)
@@ -64,37 +62,37 @@ Score **10 / 10**. Static extraction recovered AES key, mutex, 6 C2 hosts, insta
 ![](https://img.shields.io/badge/T1614.001-f85149?style=flat-square&labelColor=2d1010)
 ![](https://img.shields.io/badge/SeDebugPrivilege-f85149?style=flat-square&labelColor=2d1010)
 
-[![View repository](https://img.shields.io/badge/View_Repository-AsyncRAT_Analysis-1f6feb?style=flat-square&logo=github&logoColor=white&labelColor=0d1117)](https://github.com/edwii-78/AsyncRAT-Malware-Analysis-and-SOC-Investigation)
+[![View repository](https://img.shields.io/badge/View_repository-AsyncRAT_Analysis-1f6feb?style=flat-square&logo=github&logoColor=white)](https://github.com/edwii-78/AsyncRAT-Malware-Analysis-and-SOC-Investigation)
 
 </td></tr></table>
 
 <br/>
 
-<table><tr><td width="100%">
+<table><tr><td>
 
-<img align="right" src="https://img.shields.io/badge/PHISHING_INVESTIGATION-f85149?style=flat-square&labelColor=2d1010" alt=""/>
+<img align="right" width="4" height="1" src="https://img.shields.io/badge/-f85149?style=flat-square" alt=""/>
 
-**`OP-002`** &nbsp;·&nbsp; ![](https://img.shields.io/badge/COMPLETED-238636?style=flat-square&labelColor=0d1117)
+**`INVESTIGATION`** &nbsp;·&nbsp; ![](https://img.shields.io/badge/COMPLETED-238636?style=flat-square&labelColor=0d1117)
 
 ### Email Phishing IR — UPS Brand Impersonation
-`Header Forensics` &nbsp;·&nbsp; `SPF/DKIM/DMARC` &nbsp;·&nbsp; `Threat Intel` &nbsp;·&nbsp; `IOC Analysis`
+`Header Forensics` &nbsp;·&nbsp; `SPF/DKIM/DMARC` &nbsp;·&nbsp; `Threat Intel Enrichment` &nbsp;·&nbsp; `IOC Analysis`
 
-Core finding: attacker legitimately owned a Microsoft 365 tenant to inherit Microsoft's outbound IP reputation — SPF, DKIM, and ARC all passed, yet the email was malicious. Redirect chain `t.co → zoomertar.com` (VT 2/91, Redemption Period). Tracking pixels confirmed mailbox fingerprinting. 10-stage attack chain reconstructed.
+Sender domain passed SPF, DKIM, and ARC — the attacker legitimately owned a Microsoft 365 tenant to inherit Microsoft's IP reputation and bypass authentication-based filtering. Redirect chain `t.co/f9tVtkdJm3` → `zoomertar.com` (VT 2/91, Redemption Period). Hidden tracking pixels on `199.192.27.195` (135 passive DNS resolutions, PayPal/Amazon phishing history) confirmed mailbox fingerprinting. Attack chain reconstructed across 10 stages.
 
 | Field | Detail |
 |:---|:---|
-| Core finding | Authenticated M365 abuse — auth pass ≠ legitimacy |
-| Phishing domain | `zoomertar.com` — VT 2/91 · Redemption Period |
-| Tracking infra | `199.192.27.195` — 135 passive DNS resolutions |
-| Output | IOC table · 10-stage attack chain · MITRE map · containment plan |
+| Key finding | Authenticated M365 tenant abuse — auth pass ≠ legitimacy |
+| Phishing domain | `zoomertar.com` — VT 2/91 · Redemption Period · IP churn |
+| Tracking server | `199.192.27.195` — 135 passive DNS resolutions · shared phish hosting |
+| Output | IOC table · 10-stage attack chain · MITRE mapping · containment plan |
 
 ![](https://img.shields.io/badge/T1566-f85149?style=flat-square&labelColor=2d1010)
 ![](https://img.shields.io/badge/T1566.002-f85149?style=flat-square&labelColor=2d1010)
 ![](https://img.shields.io/badge/T1199-f85149?style=flat-square&labelColor=2d1010)
 ![](https://img.shields.io/badge/T1589-f85149?style=flat-square&labelColor=2d1010)
-![](https://img.shields.io/badge/T1204-f85149?style=flat-square&labelColor=2d1010)
+![](https://img.shields.io/badge/Header_Forensics-f85149?style=flat-square&labelColor=2d1010)
 
-[![View repository](https://img.shields.io/badge/View_Repository-Phishing_IR-1f6feb?style=flat-square&logo=github&logoColor=white&labelColor=0d1117)](https://github.com/edwii-78/Phishing-Email-Investigation-)
+[![View repository](https://img.shields.io/badge/View_repository-Phishing_IR-1f6feb?style=flat-square&logo=github&logoColor=white)](https://github.com/edwii-78/Phishing-Email-Investigation-)
 
 </td></tr></table>
 
@@ -104,49 +102,38 @@ Core finding: attacker legitimately owned a Microsoft 365 tenant to inherit Micr
 
 <br/>
 
-## Detection Engineering Labs
-
-<sub>Environments built and operated end-to-end — not walkthroughs.</sub>
+## Detection engineering labs
 
 <br/>
 
-<table><tr><td width="100%">
+<table><tr><td>
 
-**`OP-003`** &nbsp;·&nbsp; ![](https://img.shields.io/badge/PRODUCTION-1f6feb?style=flat-square&labelColor=0d1117)
+**`LAB`** &nbsp;·&nbsp; ![](https://img.shields.io/badge/PRODUCTION-1f6feb?style=flat-square&labelColor=0d1117)
 
 ### DefenderPi — Inline IPS with ML Anomaly Detection
 `Raspberry Pi 4` &nbsp;·&nbsp; `Suricata` &nbsp;·&nbsp; `scikit-learn` &nbsp;·&nbsp; `Redis` &nbsp;·&nbsp; `Grafana`
 
-Raspberry Pi 4 deployed **inline on a live network**. Suricata in NFQUEUE mode inspects every packet; confirmed threats trigger automated iptables/ipset blocks. A secondary ML layer (K-Means + Isolation Forest) catches what signatures miss. Pi-hole + Unbound handles recursive DNS filtering.
-
-| Component | Role |
-|:---|:---|
-| Suricata NFQUEUE | Inline inspection + rule-based detection |
-| K-Means · Isolation Forest | Behavioural anomaly layer |
-| iptables / ipset | Automated block enforcement |
+Raspberry Pi 4 deployed **inline on a live network** — not a VM. Suricata in NFQUEUE mode inspects every packet; confirmed threats trigger automated iptables/ipset block rules. A secondary ML layer (K-Means + Isolation Forest) catches behavioural anomalies that signatures miss. Pi-hole + Unbound handles recursive DNS filtering.
 
 ![](https://img.shields.io/badge/Network_IDS-1f6feb?style=flat-square&labelColor=0d1520)
 ![](https://img.shields.io/badge/ML_Detection-1f6feb?style=flat-square&labelColor=0d1520)
 ![](https://img.shields.io/badge/Auto_Response-1f6feb?style=flat-square&labelColor=0d1520)
+![](https://img.shields.io/badge/DNS_Defence-1f6feb?style=flat-square&labelColor=0d1520)
 
-[![View repository](https://img.shields.io/badge/View_Repository-DefenderPi-1f6feb?style=flat-square&logo=github&logoColor=white&labelColor=0d1117)](https://github.com/edwii-78/DefenderPi)
+[![View repository](https://img.shields.io/badge/View_repository-DefenderPi-1f6feb?style=flat-square&logo=github&logoColor=white)](https://github.com/edwii-78/DefenderPi)
 
 </td></tr></table>
 
 <br/>
 
-<table><tr><td width="100%">
+<table><tr><td>
 
-**`OP-004`** &nbsp;·&nbsp; ![](https://img.shields.io/badge/COMPLETED-238636?style=flat-square&labelColor=0d1117)
+**`LAB`** &nbsp;·&nbsp; ![](https://img.shields.io/badge/COMPLETED-238636?style=flat-square&labelColor=0d1117)
 
 ### Wazuh Detection Engineering Lab — Windows Threat Simulation
 `Windows 11` &nbsp;·&nbsp; `Sysmon` &nbsp;·&nbsp; `Wazuh` &nbsp;·&nbsp; `MITRE ATT&CK`
 
-Eight MITRE ATT&CK techniques simulated and detected end-to-end on a Windows 11 lab with Sysmon telemetry. Each produced a custom detection rule, a triggered alert, and a written incident report.
-
-<details>
-<summary><b>View all 8 techniques</b></summary>
-<br/>
+Eight MITRE ATT&CK techniques simulated and detected end-to-end — each produced a custom detection rule, a triggered alert, and a written incident report.
 
 | # | Technique | Detection |
 |:--|:----------|:----------|
@@ -159,129 +146,91 @@ Eight MITRE ATT&CK techniques simulated and detected end-to-end on a Windows 11 
 | 7 | SMB / NTLM auth | Event IDs 4624, 4625, 4634, 4672 |
 | 8 | Privileged account abuse | Event ID 4672 + type-3 logon chain |
 
-</details>
+![](https://img.shields.io/badge/8_TTPs_end--to--end-1f6feb?style=flat-square&labelColor=0d1520)
 
-![](https://img.shields.io/badge/T1046-1f6feb?style=flat-square&labelColor=0d1520)
-![](https://img.shields.io/badge/T1059-1f6feb?style=flat-square&labelColor=0d1520)
-![](https://img.shields.io/badge/T1547-1f6feb?style=flat-square&labelColor=0d1520)
-![](https://img.shields.io/badge/T1021-1f6feb?style=flat-square&labelColor=0d1520)
-![](https://img.shields.io/badge/T1078-1f6feb?style=flat-square&labelColor=0d1520)
-
-[![View repository](https://img.shields.io/badge/View_Repository-Wazuh_SOC_Lab-1f6feb?style=flat-square&logo=github&logoColor=white&labelColor=0d1117)](https://github.com/edwii-78/Wazuh-SOC-Detection-Engineering-Lab)
+[![View repository](https://img.shields.io/badge/View_repository-Wazuh_SOC_Lab-1f6feb?style=flat-square&logo=github&logoColor=white)](https://github.com/edwii-78/Wazuh-SOC-Detection-Engineering-Lab)
 
 </td></tr></table>
 
 <br/>
 
----
+<table><tr><td>
+
+**`LAB`** &nbsp;·&nbsp; ![](https://img.shields.io/badge/6_%2F_13_COMPLETE-d29922?style=flat-square&labelColor=0d1117)
+
+### Splunk Threat Hunting & Detection Engineering
+`Splunk Enterprise` &nbsp;·&nbsp; `SPL` &nbsp;·&nbsp; `Sysmon` &nbsp;·&nbsp; `MITRE ATT&CK`
+
+A 13-investigation roadmap covering the full attack lifecycle — authentication, initial access, LOLBins, credential access, lateral movement, C2, and impact. Each produces a standalone SOC report with SPL detection logic, IOC extraction, and MITRE mapping.
+
+| Phase | Progress | Completed |
+|:---|:---:|:---|
+| 1 — Authentication | 2 / 2 | Account lockout · Unauthorized local admin creation |
+| 2 — Initial access & LOLBins | 3 / 3 | Certutil download · MSHTA execution · Office → PowerShell |
+| 3 — Credential access & lateral movement | 1 / 4 | LSASS credential dump attempt |
+| 4 — Impact & defense evasion | 0 / 4 | — |
+
+*In progress: BITSAdmin abuse. Next: WMI remote execution, C2 beacon detection.*
+
+[![View repository](https://img.shields.io/badge/View_repository-Splunk_Lab-1f6feb?style=flat-square&logo=github&logoColor=white)](https://github.com/edwii-78/Splunk-SOC-Detection-Engineering-Lab)
+
+</td></tr></table>
 
 <br/>
 
-## Active Roadmap
+<table><tr><td>
 
-<sub>Tracked publicly, updated as each investigation ships. Most portfolios show finished work only — this shows how the work gets built.</sub>
-
-<br/>
-
-| Platform | Focus | Progress | |
-|:---|:---|:---|:---:|
-| **Splunk** | SIEM detection engineering · SPL · threat hunting | `██████████░░░░░░░░░░` 6 / 13 | [Repo →](https://github.com/edwii-78/Splunk-SOC-Detection-Engineering-Lab) |
-| **Defender XDR** | Enterprise endpoint investigation · KQL · live response | `░░░░░░░░░░░░░░░░░░░░` 0 / 6 | Planning |
-| **Microsoft Sentinel** | Cross-domain SIEM/SOAR · automation | `░░░░░░░░░░░░░░░░░░░░` 0 / 6 | Planning |
-
-<br/>
-
-<details>
-<summary><b>Splunk — 13-project roadmap, phase breakdown</b></summary>
-<br/>
-
-**Phase 1 — Authentication Monitoring**
-| | Investigation | MITRE |
-|:---|:---|:---|
-| ✅ | Account Lockout Investigation | T1110 |
-| ✅ | Unauthorized Local Administrator Creation | T1136 |
-
-**Phase 2 — Initial Access & Execution (LOLBins)**
-| | Investigation | MITRE |
-|:---|:---|:---|
-| ✅ | Certutil Download Activity | T1105 |
-| ✅ | MSHTA Remote Script Execution | T1218.005 |
-| ✅ | Office → PowerShell Execution Chain | T1204 · T1059.001 |
-
-**Phase 3 — Credential Access & Lateral Movement**
-| | Investigation | MITRE |
-|:---|:---|:---|
-| ✅ | Attempted LSASS Credential Dumping | T1003.001 · T1218.011 |
-| 🔄 | BITSAdmin Abuse | T1197 |
-| ⬜ | WMI Remote Execution Investigation | T1047 |
-| ⬜ | Command & Control Beacon Detection | T1071 |
-
-**Phase 4 — Impact & Defense Evasion**
-| | Investigation | MITRE |
-|:---|:---|:---|
-| ⬜ | Data Exfiltration Detection | T1041 |
-| ⬜ | Shadow Copy Deletion | T1490 |
-| ⬜ | Ransomware Behavioral Detection | T1486 · T1490 |
-| ⬜ | File Encryption Burst Detection | T1486 |
-
-</details>
-
-<details>
-<summary><b>Microsoft Defender XDR — 6-project series</b></summary>
-<br/>
-
-| | Project |
-|:---|:---|
-| ⬜ | Endpoint Incident Investigation & Response |
-| ⬜ | Automated Investigation & Attack Disruption |
-| ⬜ | Threat Intelligence & IOC Management |
-| ⬜ | Advanced Hunting & Proactive Threat Hunting (KQL) |
-| ⬜ | Enterprise XDR Incident Correlation |
-| ⬜ | Live Response & Enterprise Forensics |
-
-</details>
-
-<details>
-<summary><b>Microsoft Sentinel — 6-project series</b></summary>
-<br/>
-
-| | Project |
-|:---|:---|
-| ⬜ | Phishing Email → Defender XDR → Sentinel Investigation |
-| ⬜ | Cloud Identity Attack Investigation (Entra ID) |
-| ⬜ | Business Email Compromise (BEC) Investigation |
-| ⬜ | Cloud Account Takeover & OAuth Persistence |
-| ⬜ | Defender XDR → Sentinel Incident Correlation |
-| ⬜ | Sentinel Detection Engineering & SOAR |
-
-</details>
-
-<br/>
-
----
-
-<br/>
-
-## Applied Security Build
-
-<br/>
-
-<table><tr><td width="100%">
-
-**`OP-005`** &nbsp;·&nbsp; ![](https://img.shields.io/badge/COMPLETED-238636?style=flat-square&labelColor=0d1117)
+**`BUILD`** &nbsp;·&nbsp; ![](https://img.shields.io/badge/COMPLETED-238636?style=flat-square&labelColor=0d1117)
 
 ### ZeroTrace — AES-256 Encrypted Messenger
 `Flutter` &nbsp;·&nbsp; `Firebase` &nbsp;·&nbsp; `Node.js` &nbsp;·&nbsp; `AES-256 E2E`
 
-AES-256 encryption applied on-device before transit. The server handles only ciphertext. Messages auto-delete server-side on read — no persistent store, no forensic trace.
+AES-256 encryption applied on-device before transit — the server handles only ciphertext. Messages auto-delete server-side on read, leaving no forensic trace.
 
-![](https://img.shields.io/badge/AES--256_E2E-6e7681?style=flat-square&labelColor=1a1f2a)
-![](https://img.shields.io/badge/Zero_Plaintext-6e7681?style=flat-square&labelColor=1a1f2a)
-![](https://img.shields.io/badge/Auto_Deletion-6e7681?style=flat-square&labelColor=1a1f2a)
+![](https://img.shields.io/badge/AES--256_E2E-1f6feb?style=flat-square&labelColor=0d1520)
+![](https://img.shields.io/badge/Zero_Plaintext-1f6feb?style=flat-square&labelColor=0d1520)
+![](https://img.shields.io/badge/Auto_Deletion-1f6feb?style=flat-square&labelColor=0d1520)
 
-[![View repository](https://img.shields.io/badge/View_Repository-ZeroTrace-1f6feb?style=flat-square&logo=github&logoColor=white&labelColor=0d1117)](https://github.com/edwii-78/ZeroTrace-AES-Encrypted-Messaging-App-With-ServerSide-AutoDeletion)
+[![View repository](https://img.shields.io/badge/View_repository-ZeroTrace-1f6feb?style=flat-square&logo=github&logoColor=white)](https://github.com/edwii-78/ZeroTrace-AES-Encrypted-Messaging-App-With-ServerSide-AutoDeletion)
 
 </td></tr></table>
+
+<br/>
+
+---
+
+<br/>
+
+## Enterprise roadmap
+
+<br/>
+
+<table><tr><td width="50%" valign="top">
+
+**`NEXT`** &nbsp;·&nbsp; ![](https://img.shields.io/badge/0_%2F_6-6e7681?style=flat-square&labelColor=0d1117)
+
+### Microsoft Defender XDR
+Enterprise endpoint investigation, automated response, threat intelligence operationalization, and advanced hunting with KQL — distinct from the Wazuh/Splunk work by covering Microsoft's XDR correlation and live-response forensics.
+
+`Defender for Endpoint` `Entra ID` `KQL`
+
+</td>
+<td width="50%" valign="top">
+
+**`NEXT`** &nbsp;·&nbsp; ![](https://img.shields.io/badge/0_%2F_6-6e7681?style=flat-square&labelColor=0d1117)
+
+### Microsoft Sentinel
+Enterprise SIEM correlating telemetry from Defender XDR, Entra ID, and Microsoft 365 into unified incidents — KQL analytics rules, watchlists, and automated response with Logic Apps and ServiceNow.
+
+`Sentinel` `SOAR` `Logic Apps`
+
+</td></tr></table>
+
+<br/>
+
+```text
+Wazuh (done)  →  Splunk (6/13)  →  Defender XDR (next)  →  Sentinel (next)
+```
 
 <br/>
 
@@ -291,17 +240,19 @@ AES-256 encryption applied on-device before transit. The server handles only cip
 
 ## Stack
 
-**Detection & SIEM** &nbsp;&nbsp; ![Wazuh](https://img.shields.io/badge/Wazuh-0d1a2d?style=flat-square&logo=wazuh&logoColor=79c0ff) ![Splunk](https://img.shields.io/badge/Splunk-0d1a2d?style=flat-square&logo=splunk&logoColor=79c0ff) ![Sentinel](https://img.shields.io/badge/Microsoft_Sentinel-0d1a2d?style=flat-square&logo=microsoftazure&logoColor=79c0ff) ![Defender XDR](https://img.shields.io/badge/Defender_XDR-0d1a2d?style=flat-square&logo=microsoftdefender&logoColor=79c0ff) ![Grafana](https://img.shields.io/badge/Grafana-0d1a2d?style=flat-square&logo=grafana&logoColor=79c0ff)
+<br/>
 
-**Network & IDS/IPS** &nbsp;&nbsp; ![Suricata](https://img.shields.io/badge/Suricata-2d1010?style=flat-square&logoColor=ff7b72) ![Wireshark](https://img.shields.io/badge/Wireshark-2d1010?style=flat-square&logo=wireshark&logoColor=ff7b72) ![Nmap](https://img.shields.io/badge/Nmap-2d1010?style=flat-square&logoColor=ff7b72) ![Pi-hole](https://img.shields.io/badge/Pi--hole-2d1010?style=flat-square&logo=pi-hole&logoColor=ff7b72)
+**Detection & SIEM** &nbsp; — &nbsp; ![Wazuh](https://img.shields.io/badge/Wazuh-0d2137?style=flat-square&logo=wazuh&logoColor=79c0ff) ![Splunk](https://img.shields.io/badge/Splunk-0d2137?style=flat-square&logo=splunk&logoColor=79c0ff) ![Microsoft Sentinel](https://img.shields.io/badge/Microsoft_Sentinel-0d2137?style=flat-square&logo=microsoftazure&logoColor=79c0ff) ![Grafana](https://img.shields.io/badge/Grafana-0d2137?style=flat-square&logo=grafana&logoColor=79c0ff)
 
-**Endpoint & Forensics** &nbsp;&nbsp; ![Sysmon](https://img.shields.io/badge/Sysmon-2a1f08?style=flat-square&logo=windows&logoColor=e3b341) ![Autopsy](https://img.shields.io/badge/Autopsy-2a1f08?style=flat-square&logoColor=e3b341) ![Triage](https://img.shields.io/badge/Triage_Sandbox-2a1f08?style=flat-square&logoColor=e3b341) ![Burp Suite](https://img.shields.io/badge/Burp_Suite-2a1f08?style=flat-square&logoColor=e3b341)
+**Network & IDS/IPS** &nbsp; — &nbsp; ![Suricata](https://img.shields.io/badge/Suricata-3d1f1f?style=flat-square&logoColor=ff7b72) ![Wireshark](https://img.shields.io/badge/Wireshark-3d1f1f?style=flat-square&logo=wireshark&logoColor=ff7b72) ![Nmap](https://img.shields.io/badge/Nmap-3d1f1f?style=flat-square&logoColor=ff7b72) ![Pi-hole](https://img.shields.io/badge/Pi--hole-3d1f1f?style=flat-square&logo=pi-hole&logoColor=ff7b72)
 
-**Identity & Cloud** &nbsp;&nbsp; ![Entra ID](https://img.shields.io/badge/Entra_ID-160f2d?style=flat-square&logo=microsoftazure&logoColor=d2a8ff) ![Active Directory](https://img.shields.io/badge/Active_Directory-160f2d?style=flat-square&logo=windows&logoColor=d2a8ff) ![Logic Apps](https://img.shields.io/badge/Logic_Apps-160f2d?style=flat-square&logo=microsoftazure&logoColor=d2a8ff)
+**Endpoint & Forensics** &nbsp; — &nbsp; ![Sysmon](https://img.shields.io/badge/Sysmon-2a1f08?style=flat-square&logo=windows&logoColor=e3b341) ![Autopsy](https://img.shields.io/badge/Autopsy-2a1f08?style=flat-square&logoColor=e3b341) ![Triage Sandbox](https://img.shields.io/badge/Triage_Sandbox-2a1f08?style=flat-square&logoColor=e3b341) ![Burp Suite](https://img.shields.io/badge/Burp_Suite-2a1f08?style=flat-square&logoColor=e3b341)
 
-**Frameworks** &nbsp;&nbsp; ![MITRE](https://img.shields.io/badge/MITRE_ATT%26CK-1f2d1f?style=flat-square&logoColor=56d364) ![Linux](https://img.shields.io/badge/Linux-1f2d1f?style=flat-square&logo=linux&logoColor=56d364) ![Kali](https://img.shields.io/badge/Kali-1f2d1f?style=flat-square&logo=kalilinux&logoColor=56d364) ![Windows Server](https://img.shields.io/badge/Windows_Server-1f2d1f?style=flat-square&logo=windows&logoColor=56d364)
+**Identity & Cloud** &nbsp; — &nbsp; ![Entra ID](https://img.shields.io/badge/Entra_ID-160f2d?style=flat-square&logo=microsoftazure&logoColor=d2a8ff) ![Active Directory](https://img.shields.io/badge/Active_Directory-160f2d?style=flat-square&logo=windows&logoColor=d2a8ff) ![Logic Apps](https://img.shields.io/badge/Azure_Logic_Apps-160f2d?style=flat-square&logo=microsoftazure&logoColor=d2a8ff)
 
-**Languages & Query** &nbsp;&nbsp; ![Python](https://img.shields.io/badge/Python-1f1a2d?style=flat-square&logo=python&logoColor=bc8cff) ![Bash](https://img.shields.io/badge/Bash-1f1a2d?style=flat-square&logo=gnubash&logoColor=bc8cff) ![SPL](https://img.shields.io/badge/SPL-1f1a2d?style=flat-square&logoColor=bc8cff) ![KQL](https://img.shields.io/badge/KQL-1f1a2d?style=flat-square&logoColor=bc8cff)
+**Frameworks** &nbsp; — &nbsp; ![MITRE ATT&CK](https://img.shields.io/badge/MITRE_ATT%26CK-1f2d1f?style=flat-square&logoColor=56d364) ![Linux](https://img.shields.io/badge/Linux-1f2d1f?style=flat-square&logo=linux&logoColor=56d364) ![Kali](https://img.shields.io/badge/Kali_Linux-1f2d1f?style=flat-square&logo=kalilinux&logoColor=56d364) ![Windows Server](https://img.shields.io/badge/Windows_Server-1f2d1f?style=flat-square&logo=windows&logoColor=56d364)
+
+**Languages & Query** &nbsp; — &nbsp; ![Python](https://img.shields.io/badge/Python-1f1a2d?style=flat-square&logo=python&logoColor=bc8cff) ![Bash](https://img.shields.io/badge/Bash-1f1a2d?style=flat-square&logo=gnubash&logoColor=bc8cff) ![SPL](https://img.shields.io/badge/Splunk_SPL-1f1a2d?style=flat-square&logoColor=bc8cff) ![KQL](https://img.shields.io/badge/KQL-1f1a2d?style=flat-square&logoColor=bc8cff)
 
 <br/>
 
@@ -311,7 +262,7 @@ AES-256 encryption applied on-device before transit. The server handles only cip
 
 ## Activity
 
-> Stats update every 24 hours. Each committed detection rule, SPL/KQL query, or lab update moves these numbers.
+> Stats update every 24 hours. Commit regularly — each detection rule, lab update, or SPL/KQL query counts.
 
 <div align="center">
 
@@ -319,12 +270,12 @@ AES-256 encryption applied on-device before transit. The server handles only cip
 
 <br/><br/>
 
-*Each cell is a log event. The red sweep is the detection scan.*
+**SIEM log stream &nbsp;·&nbsp; contribution activity**
 
 <picture>
   <source media="(prefers-color-scheme: dark)"  srcset="https://raw.githubusercontent.com/edwii-78/edwii-78/output/soc-log-stream-dark.svg"/>
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/edwii-78/edwii-78/output/soc-log-stream.svg"/>
-  <img alt="SOC Log Stream" src="https://raw.githubusercontent.com/edwii-78/edwii-78/output/soc-log-stream-dark.svg"/>
+  <img alt="SOC Log Stream — Contribution Activity" src="https://raw.githubusercontent.com/edwii-78/edwii-78/output/soc-log-stream-dark.svg"/>
 </picture>
 
 </div>
@@ -344,8 +295,8 @@ AES-256 encryption applied on-device before transit. The server handles only cip
 | Introduction to Microsoft Sentinel | Microsoft | `Active` |
 | Intro to Splunk | Splunk | `Active` |
 | Cyber Threat Intelligence 101 | arcX | `Active` |
-| IAM Job Simulation | Forage — TCS | `Active` |
-| Cybersecurity Simulations | Forage — Deloitte · AIG · Mastercard | `Active` |
+| TCS IAM Job Simulation | Forage — Tata Consultancy Services | `Active` |
+| Job Simulations | Forage — Deloitte · AIG · Mastercard | `Active` |
 
 *Pursuing: CNSP · AWS Cloud Practitioner · TryHackMe SOC Level 1 · AI Security*
 
@@ -355,12 +306,12 @@ AES-256 encryption applied on-device before transit. The server handles only cip
 
 <br/>
 
-## Vulnerability Research
+## Vulnerability research
 
 | | |
 |:---|:---|
 | **Scope** | Indian government portals, universities, public institutions |
-| **Findings** | 15+ vulnerabilities responsibly disclosed |
+| **Findings** | 15+ vulnerabilities disclosed |
 | **Classes** | SQL injection · XSS · DNS cache poisoning · clickjacking · auth bypass |
 | **Notable** | IIT Madras — verified and acknowledged |
 | **Recognition** | CERT-In Hall of Fame — nominated twice, under review |
@@ -376,8 +327,8 @@ AES-256 encryption applied on-device before transit. The server handles only cip
 <div align="center">
 
 <a href="https://tryhackme.com/p/edwindominic7878">
-<img src="https://raw.githubusercontent.com/edwii-78/edwii-78/main/assets/thm-stats.svg"
-     width="760" alt="TryHackMe — edwindominic7878"/>
+  <img src="https://raw.githubusercontent.com/edwii-78/edwii-78/main/assets/thm-stats.svg"
+       width="760" alt="TryHackMe stats — edwindominic7878"/>
 </a>
 
 <br/><br/>
