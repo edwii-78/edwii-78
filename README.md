@@ -24,7 +24,7 @@
 
 Produced professional-grade SOC investigation reports — a full behavioral malware analysis of AsyncRAT v0.5.8 and a credential phishing IR documenting authenticated Microsoft 365 tenant abuse to bypass SPF/DKIM. Both include MITRE ATT&CK mappings, IOC tables, containment plans, and Splunk SPL hunting queries.
 
-Building a detection engineering progression across Wazuh, Splunk, Microsoft Defender XDR, and Microsoft Sentinel — each platform demonstrating a distinct SOC capability. Eight MITRE ATT&CK techniques detected end-to-end on Wazuh. A Raspberry Pi 4 runs as an inline IPS with ML anomaly detection on a production network.
+Building a detection engineering progression across Wazuh, Splunk, Microsoft Defender XDR, and Microsoft Sentinel — each platform demonstrating a distinct SOC capability. Currently working through the Splunk and Defender XDR investigation series in parallel. Eight MITRE ATT&CK techniques detected end-to-end on Wazuh. A Raspberry Pi 4 runs as an inline IPS with ML anomaly detection on a production network.
 
 Independent vulnerability research — 15+ disclosures to Indian government portals and institutions. IIT Madras acknowledged. CERT-In Hall of Fame nominated twice. Open to SOC analyst, detection engineer, and threat hunting roles — available to relocate anywhere.
 
@@ -180,6 +180,32 @@ A 13-investigation roadmap covering the full attack lifecycle — authentication
 
 <table><tr><td>
 
+**`LAB`** &nbsp;·&nbsp; ![](https://img.shields.io/badge/1_%2F_6_COMPLETE-d29922?style=flat-square&labelColor=0d1117)
+
+### Microsoft Defender XDR Investigation Lab
+`Defender for Endpoint` &nbsp;·&nbsp; `Defender XDR` &nbsp;·&nbsp; `KQL` &nbsp;·&nbsp; `MITRE ATT&CK`
+
+Enterprise-style SOC investigations using Microsoft Defender XDR and Defender for Endpoint — distinct from the detection engineering focus of Wazuh/Splunk, this series emphasises how a SOC analyst investigates, correlates, assesses, and responds to incidents on Microsoft's XDR platform: alert triage, device timeline reconstruction, process tree analysis, IOC extraction, and containment decisions.
+
+| # | Project | Status |
+|:--|:---|:---|
+| 01 | Endpoint Incident Investigation | ✅ Completed |
+| 02 | Automated Investigation & Attack Disruption | ⬜ Planned |
+| 03 | Threat Intelligence & IOC Management | ⬜ Planned |
+| 04 | Advanced Hunting & Proactive Threat Hunting (KQL) | ⬜ Planned |
+| 05 | Enterprise XDR Incident Correlation | ⬜ Planned |
+| 06 | Live Response & Enterprise Forensics | ⬜ Planned |
+
+*Investigation workflow: Alert → Incident → Evidence Collection → Device Timeline → Process Tree → Investigation Graph → IOC Analysis → MITRE Mapping → Risk Assessment → Containment → Closure.*
+
+[![View repository](https://img.shields.io/badge/View_repository-Defender_XDR_Lab-1f6feb?style=flat-square&logo=github&logoColor=white)](https://github.com/edwii-78/Microsoft-Defender-XDR-Investigation-Lab)
+
+</td></tr></table>
+
+<br/>
+
+<table><tr><td>
+
 **`BUILD`** &nbsp;·&nbsp; ![](https://img.shields.io/badge/COMPLETED-238636?style=flat-square&labelColor=0d1117)
 
 ### ZeroTrace — AES-256 Encrypted Messenger
@@ -205,32 +231,26 @@ AES-256 encryption applied on-device before transit — the server handles only 
 
 <br/>
 
-<table><tr><td width="50%" valign="top">
+<table><tr><td>
 
 **`NEXT`** &nbsp;·&nbsp; ![](https://img.shields.io/badge/0_%2F_6-6e7681?style=flat-square&labelColor=0d1117)
 
-### Microsoft Defender XDR
-Enterprise endpoint investigation, automated response, threat intelligence operationalization, and advanced hunting with KQL — distinct from the Wazuh/Splunk work by covering Microsoft's XDR correlation and live-response forensics.
+### Microsoft Sentinel — Enterprise SIEM & SOAR
+Enterprise SIEM correlating telemetry from Defender XDR, Entra ID, and Microsoft 365 into unified incidents — KQL analytics rules, watchlists, and automated response with Logic Apps and ServiceNow integration. Begins once the Defender XDR series reaches cross-domain correlation.
 
-`Defender for Endpoint` `Entra ID` `KQL`
-
-</td>
-<td width="50%" valign="top">
-
-**`NEXT`** &nbsp;·&nbsp; ![](https://img.shields.io/badge/0_%2F_6-6e7681?style=flat-square&labelColor=0d1117)
-
-### Microsoft Sentinel
-Enterprise SIEM correlating telemetry from Defender XDR, Entra ID, and Microsoft 365 into unified incidents — KQL analytics rules, watchlists, and automated response with Logic Apps and ServiceNow.
-
-`Sentinel` `SOAR` `Logic Apps`
+`Microsoft Sentinel` &nbsp;·&nbsp; `KQL` &nbsp;·&nbsp; `SOAR` &nbsp;·&nbsp; `Logic Apps`
 
 </td></tr></table>
 
 <br/>
 
 ```text
-Wazuh (done)  →  Splunk (6/13)  →  Defender XDR (next)  →  Sentinel (next)
+Wazuh (done)  →  Splunk (6/13)  →  Defender XDR (1/6)  →  Sentinel (next)
 ```
+
+<br/>
+
+*Splunk and Defender XDR are being built in parallel.*
 
 <br/>
 
@@ -242,7 +262,7 @@ Wazuh (done)  →  Splunk (6/13)  →  Defender XDR (next)  →  Sentinel (next)
 
 <br/>
 
-**Detection & SIEM** &nbsp; — &nbsp; ![Wazuh](https://img.shields.io/badge/Wazuh-0d2137?style=flat-square&logo=wazuh&logoColor=79c0ff) ![Splunk](https://img.shields.io/badge/Splunk-0d2137?style=flat-square&logo=splunk&logoColor=79c0ff) ![Microsoft Sentinel](https://img.shields.io/badge/Microsoft_Sentinel-0d2137?style=flat-square&logo=microsoftazure&logoColor=79c0ff) ![Grafana](https://img.shields.io/badge/Grafana-0d2137?style=flat-square&logo=grafana&logoColor=79c0ff)
+**Detection & SIEM** &nbsp; — &nbsp; ![Wazuh](https://img.shields.io/badge/Wazuh-0d2137?style=flat-square&logo=wazuh&logoColor=79c0ff) ![Splunk](https://img.shields.io/badge/Splunk-0d2137?style=flat-square&logo=splunk&logoColor=79c0ff) ![Defender XDR](https://img.shields.io/badge/Defender_XDR-0d2137?style=flat-square&logo=microsoftdefender&logoColor=79c0ff) ![Microsoft Sentinel](https://img.shields.io/badge/Microsoft_Sentinel-0d2137?style=flat-square&logo=microsoftazure&logoColor=79c0ff) ![Grafana](https://img.shields.io/badge/Grafana-0d2137?style=flat-square&logo=grafana&logoColor=79c0ff)
 
 **Network & IDS/IPS** &nbsp; — &nbsp; ![Suricata](https://img.shields.io/badge/Suricata-3d1f1f?style=flat-square&logoColor=ff7b72) ![Wireshark](https://img.shields.io/badge/Wireshark-3d1f1f?style=flat-square&logo=wireshark&logoColor=ff7b72) ![Nmap](https://img.shields.io/badge/Nmap-3d1f1f?style=flat-square&logoColor=ff7b72) ![Pi-hole](https://img.shields.io/badge/Pi--hole-3d1f1f?style=flat-square&logo=pi-hole&logoColor=ff7b72)
 
