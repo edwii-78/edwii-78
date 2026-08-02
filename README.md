@@ -170,7 +170,7 @@ A 13-investigation roadmap covering the full attack lifecycle — authentication
 | 3 — Credential access & lateral movement | 1 / 4 | LSASS credential dump attempt |
 | 4 — Impact & defense evasion | 0 / 4 | — |
 
-*In progress: BITSAdmin abuse. Next: WMI remote execution, C2 beacon detection.*
+*In progress: BITSAdmin abuse. Next: C2 beacon detection.*
 
 [![View repository](https://img.shields.io/badge/View_repository-Splunk_Lab-1f6feb?style=flat-square&logo=github&logoColor=white)](https://github.com/edwii-78/Splunk-SOC-Detection-Engineering-Lab)
 
